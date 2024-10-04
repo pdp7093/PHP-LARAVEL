@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php include_once('link.php'); ?>
+		
+		<?php
+			
+			include_once('link.php'); 
+		?>
 		<title>Home</title>
 	</head>
 	<body>
@@ -10,6 +14,7 @@
 				<h1 class=" text-center text">E-Note Book 	</h1>
 			   
 		   </div>
+		   <!--Form Option -->
 		   <div class="text-muted">
 					<h4><span><i class="fa-regular fa-hand-point-right"></i></span> Press 1 for generate Note.</h4>
 					<h4><span><i class="fa-regular fa-hand-point-right"></i></span> Press 2 for view Note.</h4>
