@@ -3,7 +3,7 @@
 	<head>
 		
 		<?php
-			
+			//here we include link.php
 			include_once('link.php'); 
 		?>
 		<title>Home</title>
@@ -38,10 +38,11 @@
 	if(isset($_REQUEST['submit']) && $_REQUEST['options']!="")
 	{
 		$opt=$_REQUEST['options'];
-		echo "You Choice Number:	".$opt;
+		
 		echo "<br>";
 		switch($opt)
 		{
+			//When the user selects choice 1, this case will be visible to them.
 			case 1:
 				?>
 					<form action="generate.php" method="post" class="col-md-3 border border-dark my-3 ">
@@ -66,9 +67,11 @@
 				</form>
 				<?php break;
 			case 2:	
+				//When the user selects choice 2, this case will be visible to them.
 				
+				//here we store data which we get from header.
 				$notes=$_GET['note'];
-				//Convert json string to array
+				//Convert json string to array.
 				$n=json_decode(urldecode($notes),true);
 				
 				echo "<br>";
@@ -79,16 +82,22 @@
 				
 				break;
 			case 4:
-				echo "Case Number 4";
+				//Exit case 
+				echo "Exit";
 				break;
+				
+			//This will fire when the user selects any number other than 1, 2, or 4.	
 			default:
+				
 				echo "Please enter the choice given above";
 				break;	
 		}
+		//This will clear the input box.
 		$_REQUEST['options']="";
 	}
 	else
 	{
+		//If user don't enter any value then it will fire.
 		if(isset($_REQUEST['submit']))
 		{
 			echo "Enter the Value";
