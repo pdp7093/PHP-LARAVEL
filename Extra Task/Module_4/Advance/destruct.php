@@ -12,6 +12,8 @@
 		{
 			echo "Simple Body Function ";
 		}
+		
+		
 	}
 	$obj= new abc;
 	$obj->body();

@@ -1,0 +1,22 @@
+@font-face
+{
+	font-family:daggerdancer;
+	src:url(fonts/daggerdancer.ttf);
+}
+@font-face
+{
+	font-family:techno;
+	src:url(fonts/techno_hideo.ttf);
+}
+@font-face {
+	font-family:inter ;
+	src: url(fonts/Inter-VariableFont_opsz\,wght.ttf);
+}
+@font-face {
+	font-family: maximum;
+	src: url(fonts/Maximum\ Voltage.ttf);
+}
+.daggerdancer{font-family:daggerdancer;}
+.techno{font-family:techno;}
+.inter{font-family: inter;}
+.maximum{font-family: maximum}
