@@ -19,20 +19,41 @@ class model
 		return $arr;
 
 	}
-	
+
 	//insert function
-	function insert($tbl,$arr)
+	function insert($tbl, $arr)
 	{
-		$col_arr=array_keys($arr);
-		$col=implode(",",$col_arr);
-		
-		$value_arr=array_value($arr);
-		$value=implode(",",$value_arr);
-		
-		$ins="insert into $tbl ($col) values ('$value')";
-		
-		$run=$this->conn->query($ins);
+
+		//$data=array("name"=>$name,"email"=>$email,"comment"=>$comment);
+		$col_arr = array_keys($arr); // array("0"=>"name","1"=>"email","2"=>"comment")
+		$col = implode(",", $col_arr); // name,email,comment
+
+		$value_arr = array_values($arr); // array("0"=>"raj","1"=>"raj@gmail.com","2"=>"hello")
+		$value = implode("','", $value_arr); // 'raj','raj@gmail.com','hello'
+
+		$ins = "insert into $tbl ($col) values ('$value')";   // query
+		$run = $this->conn->query($ins);  // run 
+		return $run;
 	}
+	
+	//Delete function
+	
+	function delete_where($tbl,$arr)
+	{
+		$column_arr=array_keys($arr);
+		$values_arr=array_values($arr);
+		
+		$del="delete from $tbl where 1=1";  // 1=1 means query contnue
+		$i=0;
+		foreach($arr as $w)
+		{
+			echo $del.=" and $column_arr[$i]='$values_arr[$i]'";
+			$i++;
+		}
+		$run=$this->conn->query($del);  // query run on db
+		return $run;
+	}
+
 }
 
 $obj = new model;

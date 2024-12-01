@@ -20,7 +20,7 @@
                     <div class="card-body p-5 ">
                         <h2 class="mb-5 text-center daggerdancer text-primary">SGuard</h2>
                         <hr style="border-color:black;">
-                        <form action="#" method="post" enctype="multipart/form-data">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-outline mb-4 row">
                                 <div class="col-md-6">
                                     <label for="firstname">Firstname</label>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="mobile">Mobile No. </label>
-                                <input type="text" name="mobile" id="mobile" class="form-control"
+                                <input type="text" name="mobile_no" id="mobile" class="form-control"
                                     placeholder="Enter mobile">
                             </div>
                             <div class="form-outline mb-4">
@@ -81,6 +81,12 @@
                                 <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Enter Password">
                             </div>
+
+                            <div class="form-outline mb-5">
+                                <label for="image">Profile Photo </label>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
+
                             <div class="form-outline mb-4">
                                 <input type="submit" value="Submit" name="submit" class="btn btn-block btn-primary">
                             </div>

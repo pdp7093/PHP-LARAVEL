@@ -38,7 +38,10 @@ function active($currect_page){
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap_4.css" />
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  
+  <link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css” />  
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto:400,500&display=swap"
@@ -92,7 +95,7 @@ function active($currect_page){
               <a class="nav-link <?php echo active('contact');?>" href="contact">Contact us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php echo active('login');?>" href="login">Login </a>
+              <a class="nav-link <?php echo active('login');?>" href="login">Login<span><i class="bi bi-door-open"></i> </a>
             </li>
           </ul>
           

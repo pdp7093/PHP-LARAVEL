@@ -28,22 +28,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                         <?php foreach($manage_customer as $mc) { ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Profile_photo</td>
-                                            <td>Full Name</td>
-                                            <td>Email</td>
-                                            <td>@Mobile_no</td>
-                                            <td>gender</td>
-                                            <td>address</td>
-                                            <td>Username</td>
-                                            <td>Password</td>
+                                            <td><?php echo $mc->id;?></td>
+                                            <td><img src="../images/dummy/<?php echo $mc->image;?>" alt="" width="40rem"></td>
+                                            <td><?php echo $mc->firstname." ".$mc->lastname;?></td>
+                                            <td><?php echo $mc->email;?></td>
+                                            <td><?php echo $mc->mobile_no;?></td>
+                                            <td><?php echo $mc->gender;?></td>
+                                            <td><?php echo $mc->address;?></td>
+                                            <td><?php echo $mc->username;?></td>
+                                           
                                             <td>
 												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
+												<a href="delete?del_customer=<?php echo $mc->id?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
                                         </tr>
-                                        
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

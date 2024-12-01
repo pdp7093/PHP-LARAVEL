@@ -26,15 +26,11 @@
         <div class="service_img-box i-box-4">
           <a href=""> Home security</a>
         </div>
+        <div class="service_img-box i-box-5">
+          <a href="">Residency Security</a>
+        </div>
       </div>
-      <div class="service_btn">
-        <a href="">
-          <span>
-            Read More
-          </span>
-          <img src="images/arrow-black.png" alt="" class="ml-2" />
-        </a>
-      </div>
+
     </div>
   </section>
   <!-- end service section -->

@@ -11,13 +11,13 @@
         </div>
         <div class=" col-md-4 contact_form-container">
           <div class="contact_box">
-            <form action="">
+            <form action="" method="post">
               <input type="text" placeholder="Your Name" name="name">
               <input type="email" placeholder="Email" name="email">
-              <input type="text" placeholder="Phone Number" name="m_no">
-              <input type="text" placeholder="Message" name="message">
+              <input type="text" placeholder="Phone Number" name="mobile_no">
+              <input type="text" placeholder="Message" name="comment">
               <div>
-                <input type="submit" class="btn bg-primary text-white p-2" name="contact_submit">
+                <input type="submit" class="btn bg-primary text-white p-2" name="submit">
               </div>
             </form>
           </div>

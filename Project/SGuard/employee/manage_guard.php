@@ -29,22 +29,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Profile_photo</td>
-                                            <td>Full Name</td>
-                                            <td>Email</td>
-                                            <td>@Mobile_no</td>
-                                            <td>gendee</td>
-                                            <td>address</td>
-                                            <td>id_proof</td>
-                                            <td>Any Disablity</td>
-                                            <td>
-												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
-											</td>
-                                        </tr>
-                                        
+                                       <?php foreach ($manage_guard as $data) { ?>
+                                            <tr>
+                                                <td><?php echo $data->id; ?></td>
+                                                <td><?php echo $data->name; ?></td>
+                                                <td><?php echo $data->email; ?></td>
+                                                <td><?php echo $data->username; ?></td>
+                                                <td>
+                                                    <a href="" class="btn btn-primary">Edit</a>
+                                                    <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?> 
                                     </tbody>
                                 </table>
                             </div>

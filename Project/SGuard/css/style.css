@@ -279,7 +279,7 @@ a:focus {
 
 /* service section */
 
-.service_section .container {
+.imsection .container {
   padding: 0 50px;
 }
 
@@ -338,6 +338,10 @@ a:focus {
 .service_img-container .service_img-box.i-box-4 {
   width: 60%;
   background-image: url(../images/home.jpeg);
+}
+.service_img-container .service_img-box.i-box-5 {
+  width: 60%;
+  background-image: url(../images/residency.jpg);
 }
 
 .service_section .service_img-container a,

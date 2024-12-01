@@ -29,11 +29,11 @@
               </div>
               <div class="form-group">
                 <label>Re Type Password </label>
-                <input class="form-control" type="password" name="re-password" placeholder="Enter Re-password">
+                <input class="form-control" type="password" name="re_password" placeholder="Enter Re-password">
                 
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block">Register Now </button>
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Register Now </button>
 
             </form>
           </div>

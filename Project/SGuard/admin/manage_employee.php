@@ -19,23 +19,24 @@
                                             
                                             <th>Full Name</th>
                                             <th>Email</th>
-                                            <th>Password</th>
+                                            <th>Status</th>
                                             <th>action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($manage_employee as $me) {?>
                                         <tr>
-                                            <td>1</td>
+                                            <td><?php echo $me->em_id;?></td>
                                             
-                                            <td>Full Name</td>
-                                            <td>Email</td>                                        
-                                            <td>Password</td>
+                                            <td><?php echo $me->name; ?></td>
+                                            <td><?php echo $me->email;?></td>                                        
+                                            <td><?php echo $me->status; ?></td>
                                             <td>
 												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
+												<a href="delete?del_employee=<?php echo $me->em_id?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
                                         </tr>
-                                        
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

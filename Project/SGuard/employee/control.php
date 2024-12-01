@@ -31,10 +31,12 @@
 				break;
 
 				case '/Manage Customer':
+					$manage_customer = $this->select('dummy_customer');
 					include_once('manage_customer.php');
 				break;
 				
 				case '/Manage Contact us':
+					$manage_contact = $this->select('contact');
 					include_once('manage_contact.php');
 				break;
 

@@ -33,7 +33,7 @@
                                                 <td><?php echo $data->username; ?></td>
                                                 <td>
                                                     <a href="" class="btn btn-primary">Edit</a>
-                                                    <a href="" class="btn btn-danger mx-2">Delete</a>
+                                                    <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -68,7 +68,7 @@
                                             <td>Any Disablity</td>
                                             <td>
                                                 <a href="" class="btn btn-primary">Edit</a>
-                                                <a href="" class="btn btn-danger mx-2">Delete</a>
+                                                <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
                                             </td>
                                         </tr>
 

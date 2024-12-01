@@ -25,19 +25,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php foreach($manage_contact as $d){?>
                                         <tr>
-                                            <td>1</td>
+											
+                                            <td><?php echo $d->con_id;?></td>
                                             
-                                            <td>Full Name</td>
-                                            <td>Email</td>                                        
-                                            <td>mobile_no</td>
-                                            <td>comment</td>
+                                            <td><?php echo $d->name;?></td>
+                                            <td><?php echo $d->email;?></td>                                        
+                                            <td><?php echo $d->mobile_no;?></td>
+                                            <td><?php echo $d->comment;?></td>
+											
                                             <td>
 												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
+												<a href="delete?del_contacts=<?php echo $d->con_id?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
                                         </tr>
-                                        
+									<?php } ?>
                                     </tbody>
                                 </table>
                             </div>

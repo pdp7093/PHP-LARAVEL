@@ -20,22 +20,17 @@
       </h2>
     </div>
     <div class="row service_img-container">
-      <div class="service_img-box i-box-1 col-md-6 text-info">
-        <a href=""> Bank security</a>
-      </div>
-      <div class="service_img-box i-box-2 col-md-6">
-        <a href="">society Guard </a>
-      </div>
-    </div>
-    <div class="row service_img-container">
-      <div class="service_img-box i-box-3">
-        <a href="">Hotel Security </a>
-      </div>
-      <div class="service_img-box i-box-4">
-        <a href=""> Home security</a>
-      </div>
+      <div class="service_img-box i-box-1 col-md-6 text-info"></div>
+      <div class="service_img-box i-box-2 col-md-6"></div>
     </div>
     
+    <div class="row service_img-container">
+      <div class="service_img-box i-box-3"></div>
+      <div class="service_img-box i-box-4"></div>
+    </div>
+    <div class="position-relative">
+      <a href="service" class="btn btn-primary rounded-pill p-2 mt-3 position-absolute top-0 start-50 translate-middle">Book Your Guard Today!</a>
+    </div>
   </div>
 </section>
 <!-- end service section -->
@@ -44,7 +39,7 @@
 
 <!-- story section -->
 
-<section class=" mt-5 layout_padding story_section">
+<section class=" mt-5  layout_padding story_section">
   <div class="container-fluid">
     <div class="row">
       <div class=" col-md-6">
@@ -79,34 +74,7 @@
 
 <!-- end story section -->
 
-<!-- contact section -->
-<section class="contact_section layout_padding-top">
-  <div class="container-fluid">
-    <div class="row">
 
-      <div class=" col-md-12 contact_form-container position-relative">
-        <div class="contact_box ">
-          <p class="" style="text-align:center;">Contact Us</p>
-          <form action="" class="">
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Email">
-            <input type="text" placeholder="Phone Number">
-            <input type="text" placeholder="Message">
-            <div>
-              <button type="submit">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  </div>
-</section>
-
-<!-- end contact section -->
 <!-- footer section -->
 <?php include_once('footer.php'); ?>
 <!-- footer section -->

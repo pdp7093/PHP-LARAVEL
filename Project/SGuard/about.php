@@ -30,7 +30,7 @@
             f act that a reader will be distracted by the readable content
             of a page whe
           </p>
-          
+
         </div>
       </div>
     </div>
@@ -41,47 +41,44 @@
 <!--Success Story Section -->
 <div class="layout_padding  p-4">
   <div class="container-fluid">
-    <div class="row">
+    <div class="">
       <div class="col-md-12">
         <div class="success_detail ">
           <h3>Our Success Story</h3>
         </div>
         <div class="success_detail">
           <h2>Customer Feed-Back</h2>
-          <div class="card">
-            <div class="card-body ">
-              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <div class="col-md-3">Customer Detail</div>
-                      <div class="col-md-9">customer-review </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="Second Images ...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="card col-md-6">
+                  <div class="card-body ">
+                    <h1>Customer Feedback</h1>
                   </div>
                 </div>
-                <button class="carousel-control-prev btn-secondary" type="button" data-target="#carouselExampleIndicators"
-                  data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-                  <span class="sr-only bg-dark">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators"
-                  data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </button>
               </div>
+              <?php foreach ($feedback as $fk) {
+                //echo $fk->name;
+
+                echo "<div class='carousel-item '>";
+                  echo "<div class='card col-md-6'>";
+                  echo "<div class='card-header border>'".$fk->name."</div>";
+                  echo "<div class='card-body'>
+                        ".$fk->username."
+                        </div>";
+                  echo "</div>";
+                echo "</div>";
+              }
+              ?>
             </div>
+            <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
+              <span class="carousel-control-prev-icon bg-dark " aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </button>
+            <button class="carousel-control-next " type="button" data-target="#carouselExampleFade" data-slide="next">
+              <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </button>
           </div>
         </div>
       </div>
