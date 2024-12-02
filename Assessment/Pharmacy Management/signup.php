@@ -33,15 +33,16 @@
                                         placeholder="Enter Lastname">
                                 </div>
                             </div>
-                            <div class="form-outline mb-4">
-                                <label for="password">Password </label>
-                                <input type="text" name="password" class="form-control"
-                                    placeholder="Enter Password">
-                            </div>
+                            
                             <div class="form-outline mb-4">
                                 <label for="pharmacy_name">Pharmacy Name</label>
                                 <input type="text" name="pharmacy_name" id="pharmacy_name"class="form-control"
                                     placeholder="Enter Pharmacy Name">
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="username">Username </label>
+                                <input type="text" name="username" class="form-control"
+                                    placeholder="Enter Username">
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="password">Password </label>

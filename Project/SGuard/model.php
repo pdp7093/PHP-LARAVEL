@@ -24,15 +24,15 @@ class model
 	function insert($tbl, $arr)
 	{
 
-		//$data=array("name"=>$name,"email"=>$email,"comment"=>$comment);
-		$col_arr = array_keys($arr); // array("0"=>"name","1"=>"email","2"=>"comment")
-		$col = implode(",", $col_arr); // name,email,comment
+		
+		$col_arr = array_keys($arr); 
+		$col = implode(",", $col_arr);
 
-		$value_arr = array_values($arr); // array("0"=>"raj","1"=>"raj@gmail.com","2"=>"hello")
-		$value = implode("','", $value_arr); // 'raj','raj@gmail.com','hello'
+		$value_arr = array_values($arr); 
+		$value = implode("','", $value_arr); 
 
-		$ins = "insert into $tbl ($col) values ('$value')";   // query
-		$run = $this->conn->query($ins);  // run 
+		$ins = "insert into $tbl ($col) values ('$value')";   
+		$run = $this->conn->query($ins);   
 		return $run;
 	}
 	
