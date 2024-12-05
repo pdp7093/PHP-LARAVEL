@@ -1,62 +1,56 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-      <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
-
-    <!-- BOOTSTRAP STYLES-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLES-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assests/css/bootstrap_4.css">
+    <link rel="stylesheet" href="assets/css/font.css">
+  <title>Login</title>
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
-<body style="background-color: #E2E2E2;">
-    <div class="container">
-        <div class="row text-center " style="padding-top:100px;">
-            <div class="col-md-12">
-                <img src="assets/img/logo-invoice.png" />
-            </div>
-        </div>
-         <div class="row ">
-               
-                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                           
-                            <div class="panel-body">
-                                <form role="form">
-                                    <hr />
-                                    <h5>Enter Details to Login</h5>
-                                       <br />
-                                     <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-                                            <input type="text" class="form-control" placeholder="Your Username " />
-                                        </div>
-                                                                              <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                                            <input type="password" class="form-control"  placeholder="Your Password" />
-                                        </div>
-                                    <div class="form-group">
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" /> Remember me
-                                            </label>
-                                            <span class="pull-right">
-                                                   <a href="index.html" >Forget password ? </a> 
-                                            </span>
-                                        </div>
-                                     
-                                     <a href="index.html" class="btn btn-primary ">Login Now</a>
-                                    <hr />
-                                    Not register ? <a href="index.html" >click here </a> or go to <a href="index.html">Home</a> 
-                                    </form>
-                            </div>
-                           
-                        </div>
-                
-                
-        </div>
-    </div>
 
+<body>
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem; border-color:blue;">
+            <div class="card-body p-5 ">
+
+              <h2 class="mb-5 text-center daggerdancer text-primary">Admin Login</h2>
+              <hr style="border-color:black;">
+              <form action="" method="post">
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="email">Email</label>
+                  <input type="email" id="email" class="form-control form-control-lg" name="email"
+                    placeholder="Enter Email" required />
+
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="password">Password</label>
+                  <input type="password" id="password" class="form-control form-control-lg" name="password"
+                    placeholder="Enter Password" required />
+
+                </div>
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block"
+                  type="submit" name="login">Login</button>
+
+                <hr class="my-1">
+                <a href="#">Forgot passowrd?</a>
+                <div class="form-outline text-center my-3">
+                  Not a member yet?<a href="signup">Create an Account</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>

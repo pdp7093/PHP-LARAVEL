@@ -10,7 +10,7 @@
                         Add Guards
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="#" method="post">
+                        <form role="form" action="#" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Enter Full Name</label>
                                 <input class="form-control" type="text" name="full_name" placeholder="Enter Full Name">
@@ -70,7 +70,7 @@
                                 <label for="profile_image">Profile Image</label>
                                 <input type="file" name="profile_image" id="profile_image">
                             </div>
-                            <button type="submit" class="btn btn-info">Submit </button>
+                            <button type="submit" class="btn btn-info" name="submit">Submit </button>
 
                         </form>
                     </div>

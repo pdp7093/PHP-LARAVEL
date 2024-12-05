@@ -31,7 +31,7 @@
                                         <?php foreach($manage_customer as $mc) { ?>
                                         <tr>
                                             <td><?php echo $mc->id;?></td>
-                                            <td><img src="../images/dummy/<?php echo $mc->image;?>" alt="" width="40rem"></td>
+                                            <td><img src="../images/Customer/<?php echo $mc->image;?>" alt="" width="40rem"></td>
                                             <td><?php echo $mc->firstname." ".$mc->lastname;?></td>
                                             <td><?php echo $mc->email;?></td>
                                             <td><?php echo $mc->mobile_no;?></td>

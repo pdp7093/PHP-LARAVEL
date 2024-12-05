@@ -1,0 +1,9 @@
+<--
+session start and session create
+after login fetch and detail
+
+create logout case 
+to unset session
+
+session based page 
+-->

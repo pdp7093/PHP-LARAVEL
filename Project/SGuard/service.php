@@ -34,7 +34,40 @@
     </div>
   </section>
   <!-- end service section -->
-
+  <?php if(isset($_SESSION['username'])){?>
+  <section class="security_section layout_padding">
+  <div class="security_container">
+  <form action="" method="post">
+  <fieldset >
+    <legend>Guard Hiring Form</legend>
+    
+    
+    <div class="form-group mb-3">
+      <label for="guard_no" class="form-label">How Many Guard You Want?</label>
+      <input type="number" name="guard_no" id="" class="form-control"required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="where" class="form-label">For Where You Want Guard?</label>
+      <input type="text" name="where" id="" class="form-control"required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea name="address" id="address" cols="10" rows="5" class="form-control"required></textarea>
+    </div>
+    <div class="form-group mb-3">
+      <label for="remark " class="form-label">Any Suggestion?</label>
+      <textarea name="remark" id="address" cols="10" rows="5" class="form-control"></textarea>
+    </div>
+    
+    
+  </fieldset>
+  <input type="submit" value="SUBMIT" class="btn btn-primary" name="submit">
+</form>
+  </div>
+  </section>
+  <?php }else{?>
+	
+  <?php }?>
   <!-- security section -->
 
   <section class="security_section layout_padding">

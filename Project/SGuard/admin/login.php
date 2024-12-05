@@ -1,8 +1,9 @@
-<?php session_start();
-  if(isset($_SESSION['username']))
-  {
-    echo "<script>window.location='home'</script>";
-  }
+<?php 
+//session_start();
+if(isset($_SESSION['email']))
+{
+  header("location:index");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +11,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-  <link rel="stylesheet" href="css/bootstrap_4.css">
-  <link rel="stylesheet" href="css/font.css">
-  <title>Login</title>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/bootstrap_4.css">
+  <link rel="stylesheet" href="../css/font.css">
+  <title>Admin Login</title>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
@@ -26,23 +27,23 @@
           <div class="card shadow-2-strong" style="border-radius: 1rem; border-color:blue;">
             <div class="card-body p-5 ">
 
-              <h2 class="mb-5 text-center daggerdancer text-primary">Manager Login</h2>
+              <h2 class="mb-5 text-center daggerdancer text-primary">SGuard ADMIN</h2>
               <hr style="border-color:black;">
-              <form action="#" method="post">
+              <form action="" method="post">
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="username">Username</label>
-                  <input type="username" id="email" class="form-control form-control-lg" name="username"
-                    placeholder="Enter Username" />
+                  <label class="form-label" for="email">Email</label>
+                  <input type="email" id="email" class="form-control form-control-lg" name="email"
+                    placeholder="Enter email" required />
 
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="password">Password</label>
                   <input type="password" id="password" class="form-control form-control-lg" name="password"
-                    placeholder="Enter Password" />
+                    placeholder="Enter Password" required />
 
                 </div>
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block"
+                <button  class="btn btn-primary btn-lg btn-block"
                   type="submit" name="login">Login</button>
 
                 <hr class="my-1">

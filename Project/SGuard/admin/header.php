@@ -1,3 +1,10 @@
+<?php //session_start(); 
+if(!isset($_SESSION['email']))
+{
+    header("location:login");
+}
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -10,13 +17,15 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    
+
     <!--CUSTOM BASIC STYLES-->
     <link href="assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/aa8cf25ef0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -34,13 +43,12 @@
 
             <div class="header-right">
 
-                <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i
-                        class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i
-                        class="fa fa-bars fa-2x"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i
-                        class="fa fa-exclamation-circle fa-2x"></i></a>
-
+               
+                <?php if (isset($_SESSION['email'])) { ?>
+                    <a href="logout" class="btn btn-danger" title="Logout"><h4>LOGOUT<span class="fa fa-exclamation-circle "></span></h4></a>
+                <?php } else { ?>
+                    <a href="login" class="btn btn-info " title="Login"><h3>LOGIN <span class="fa-solid fa-right-to-bracket "></span></h3></a>
+                <?php } ?>
             </div>
         </nav>
         <!-- /. NAV TOP  -->
@@ -53,7 +61,7 @@
                             <img src="assets/img/user.png" class="img-thumbnail" />
 
                             <div class="inner-text">
-                                Jhon Deo Alex
+                                <?php echo $_SESSION['email']; ?>
                                 <br />
                                 <small>Last Login : 2 Weeks Ago </small>
                             </div>
@@ -76,11 +84,11 @@
                             </li>
                             <li>
                                 <a href="Posting">Guards Posting</a>
-                            </li>    
+                            </li>
 
                         </ul>
                     </li>
-                   
+
                     <li>
                         <a href="Manage Customer">Manage Customers</a>
                     </li>
@@ -101,7 +109,7 @@
                     <li>
                         <a href="Manage Contact us">Manage Contact us</a>
                     </li>
-                    
+
                     <li>
                         <a href="Hiring Request">Hiring Request</a>
                     </li>
@@ -109,7 +117,7 @@
                     <li>
                         <a href="Manage Complain">Manage Complain</a>
                     </li>
-                    
+
                     <li>
                         <a href="Manage Feedback">Manage Feedback</a>
                     </li>

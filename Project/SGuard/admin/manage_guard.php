@@ -14,31 +14,7 @@
                             <div class="table-responsive ">
                                 <!--Dummy Data For Testing-->
                                 <h1 class=" text-center text-success ">Dummy Data</h1>
-                                <table class="table table-bordered border-primary">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Username</th>
-                                            <th>action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($manage_guard as $data) { ?>
-                                            <tr>
-                                                <td><?php echo $data->id; ?></td>
-                                                <td><?php echo $data->name; ?></td>
-                                                <td><?php echo $data->email; ?></td>
-                                                <td><?php echo $data->username; ?></td>
-                                                <td>
-                                                    <a href="" class="btn btn-primary">Edit</a>
-                                                    <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+									
                                 <hr>
                                 <table class="table table-hover">
                                     <thead>
@@ -56,22 +32,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($manage_guard as $data){?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Profile_photo</td>
-                                            <td>Full Name</td>
-                                            <td>Email</td>
-                                            <td>@Mobile_no</td>
-                                            <td>gendee</td>
-                                            <td>address</td>
-                                            <td>id_proof</td>
-                                            <td>Any Disablity</td>
+                                            <td><?php echo $data->gu_id;?></td>
+                                            <td><img src="../guards/<?php echo $data->profile_image;?>"></td>
+                                            <td><?php echo $data->full_name;?></td>
+                                            <td><?php echo $data->email;?></td>
+                                            <td><?php echo $data->mobile_no;?></td>
+                                            <td><?php echo $data->gender;?></td>
+                                            <td><?php echo $data->address;?></td>
+                                            <td><?php echo $data->id_proof;?></td>
+                                            <td><?php echo $data->disability;?></td>
                                             <td>
                                                 <a href="" class="btn btn-primary">Edit</a>
                                                 <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
                                             </td>
                                         </tr>
-
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>

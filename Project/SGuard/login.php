@@ -1,3 +1,11 @@
+<?php 
+session_start();
+if(isset($_SESSION['username']))
+{
+	header('location:Profile Page');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,11 +30,11 @@
 
               <h2 class="mb-5 text-center daggerdancer text-primary">SGuard</h2>
               <hr style="border-color:black;">
-              <form action="#" method="post">
+              <form action="" method="post">
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="email">Email</label>
-                  <input type="email" id="email" class="form-control form-control-lg" name="email"
-                    placeholder="Enter Email" />
+                  <label class="form-label" for="username">Username</label>
+                  <input type="text" id="username" class="form-control form-control-lg" name="username"
+                    placeholder="Enter Username" />
 
                 </div>
 
@@ -36,8 +44,7 @@
                     placeholder="Enter Password" />
 
                 </div>
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block"
-                  type="submit">Login</button>
+               <input type="submit" value="Login" name="login" class="btn btn-primary">
 
                 <hr class="my-1">
                 <a href="#">Forgot passowrd?</a>

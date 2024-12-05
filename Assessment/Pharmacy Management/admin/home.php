@@ -1,11 +1,11 @@
-﻿<?php include_once('header.php');?>
-    <div id="wrapper">
+<?php include_once('header.php');
+?>
+
+        <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Admin DASHBOARD</h1>
-                    </div>
+                    
                 </div>
                 <!-- /. ROW  -->
                 <div class="row">
@@ -36,7 +36,7 @@
 
                 </div>
                 <!-- /. ROW  -->
-                <hr />
+            
                 <div class="row">
 
                     <div class="col-md-8">
@@ -125,17 +125,16 @@
 
 
                     </div>
-                  
+                   
                 </div>
                 <!--/.Row-->
-                <hr />
-                
+               
             </div>
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
-
     <!-- /. WRAPPER  -->
 
+   
 <?php include_once('footer.php');?>

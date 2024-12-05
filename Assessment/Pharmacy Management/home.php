@@ -1,26 +1,16 @@
-<?php include_once('header.php'); ?>
+<?php include_once('header.php');
 
+$username="";
+if($_SESSION['username'])
+{
+    $username=$_SESSION['username'];
+}
+?>
+<h1 class="text-dark text-center">Home</h1>
 <section>
     <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <div class="col-md-12">
-                    <h3 class="text-center text-dark">View Medicine</h3>
-                    <table class="table text-white">
-                        <thead class="thead-dark">
-                            <th>Medicine Name</th>
-                            <th>Qty</th>
-                            <th>Added Date</th>
-                            <th>Added By</th>
-                            <th>Price</th>
-                        </thead>
-                        <tbody>
-                            <tr></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+       
+       
         <!--Add Medicine or Delete Medicine-->
         <div class="mt-4 row justify-content-between">
             <div class="card col-md-5 ">
@@ -38,18 +28,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="medicine_date">Medicine Date</label>
-                                <input type="date" name="medicine_date" id="" class="form-control" placeholder="Enter Medicine Date">
+                                <input type="date" name="added_date" id="" class="form-control" placeholder="Enter Medicine Date">
                             </div>
                             <div class="form-group">
                                 <label for="added_by">Added By</label>
-                                <input type="text" name="added_by" id="" class="form-control" placeholder="Medicine added by">
+                                <input type="text" name="added_by" id="" value="<?php echo $_SESSION['username']?>" disabled class="form-control">
+                              
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="text" name="price" id="" class="form-control" placeholder="Enter Medicine Price">
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="ADD MEDICINE" class="form-control btn-primary">
+                                <input type="submit" value="ADD MEDICINE" class="form-control btn-primary" name="add_medicine">
                             </div>
                         </form>
                     </div>
@@ -62,11 +53,16 @@
                     <h3 class="text-center border-bottom">Delete Medicine</h3>
                     <form action="" method="post" class="mt-4">
                         <div class="form-group">
-                            <label for="medicine_name">Enter Medicine Name</label>
-                            <input type="text" name="medicine_name" id="" placeholder="Enter Medicine Name You Want To Delete" class="form-control">
+                            <label for="medicine_name">Select Medicine Name</label>
+                           <select name="medicine_name" id="medicine_name">
+                           <option value="">------Select Medicine Name------</option>
+                                    <?php foreach($manage_medicine as $mm ) { ?>
+                                        <option value="<?php echo $mm->m_id;?>"><?php echo $mm->medicine_name;?></option>
+                                    <?php }?>
+                           </select>
                         </div>
                         <div class="mt-2 form-group">
-                            <input type="submit" value="DELETE MEDICINE" class=" form-control btn-danger">
+                            <input type="submit" value="Delete Medicine" class="btn btn-danger" name="delete">
                         </div>
                     </form>
                 </div>

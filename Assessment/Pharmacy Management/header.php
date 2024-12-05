@@ -1,3 +1,9 @@
+<?php 
+     if(!isset($_SESSION['username']))
+     {
+       echo "<script>window.location='login'</script>";
+     }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,15 +54,24 @@
                     <div class="main-nav d-none d-lg-block">
                         <nav class="site-navigation text-right text-md-center" role="navigation">
                             <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="home">Home</a></li>
+                                <li ><a href="home">Home</a></li>
                                 <li><a href="store">Store</a></li>
                                
                             </ul>
                         </nav>
                     </div>
+                    <?php
+                        if($_SESSION['username']){?>
+                     <div class="icons">
+                        <h5>Username:   <?php echo $_SESSION['username']; ?></h5>
+                        <a href="logout" class="btn btn-danger" title="Logout"><h4>LOGOUT<span class="fa fa-exclamation-circle "></span></h4></a>
+                    </div>
+                     
+                    <?php }else{?>
                     <div class="icons">
                         <a href="login" class="btn btn-primary">Login/Signup</a>
                     </div>
+                    <?php }?>
                 </div>
             </div>
         </div>
