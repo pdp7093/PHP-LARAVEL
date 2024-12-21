@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['username']))
 {
-	header('location:Profile Page');
+	header('location:Profile');
 }
 
 ?>
@@ -50,6 +50,9 @@ if(isset($_SESSION['username']))
                 <a href="#">Forgot passowrd?</a>
                 <div class="form-outline text-center my-3">
                   Not a member yet?<a href="signup">Create an Account</a>
+                </div>
+                <div class="form-outline text-right my-3">
+                  <a href="contact">Contact Us</a>
                 </div>
               </form>
             </div>

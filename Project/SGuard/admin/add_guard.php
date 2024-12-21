@@ -10,21 +10,21 @@
                         Add Guards
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="#" method="post" enctype="multipart/form-data">
+                        <form role="form" action="" method="post"  enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Enter Full Name</label>
-                                <input class="form-control" type="text" name="full_name" placeholder="Enter Full Name">
+                                <input class="form-control" type="text" name="full_name" placeholder="Enter Full Name"required>
 
                             </div>
                             <div class="form-group">
                                 <label>Enter Email</label>
-                                <input class="form-control" type="email" placeholder="Enter Email" name="email">
+                                <input class="form-control" type="email" placeholder="Enter Email" name="email"required>
 
                             </div>
                             <div class="form-group">
                                 <label>Enter Mobile Number</label>
                                 <input class="form-control" type="text" placeholder="Enter Mobile Number"
-                                    name="mobile_no">
+                                    name="mobile_no"required>
 
                             </div>
                             <div class="form-group">
@@ -47,11 +47,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
-                                <textarea class="form-control" rows="3" name="address"></textarea>
+                                <textarea class="form-control" rows="3" name="address" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="id_proof">Document of Id Proof</label>
-                                <input type="file" name="id_proof" id="id_proof">
+                                <label for="id_proof">Document of Id Proof(PDF Form)</label>
+                                <input type="file" name="id_proof" id="id_proof" accept="application/pdf" required>
                             </div>
                             <div class="form-group">
                                 <label>Any Disability</label>
@@ -67,8 +67,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="profile_image">Profile Image</label>
-                                <input type="file" name="profile_image" id="profile_image">
+                                <label for="profile">Profile Image</label>
+                                <input type="file" name="profile" id="profile" accept="image/*" required>
                             </div>
                             <button type="submit" class="btn btn-info" name="submit">Submit </button>
 

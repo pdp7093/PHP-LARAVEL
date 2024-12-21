@@ -4,6 +4,7 @@ include_once('header.php');
 $username = '';
 if ($_SESSION['username']) {
     $username = $_SESSION['username'];
+    
 } else {
     echo "<script>
         alert('Please Login First');
@@ -23,8 +24,13 @@ if ($_SESSION['username']) {
 
                         <p class="text-muted mb-4"><?php echo $fetch->address ?></p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Edit
-                                Profile</button>
+
+
+
+
+                            <a href="edit_profile?update=<?php echo $fetch->cust_id?>" class="btn btn-primary">Edit Profile</a>
+
+
                             <button type="button" data-mdb-button-init data-mdb-ripple-init
                                 class="btn btn-outline-primary ms-1">Reset Password</button>
                             <a href="logout" class="btn btn-outline-danger ms-1">LOGOUT</a>
@@ -83,37 +89,33 @@ if ($_SESSION['username']) {
             <div class="col-lg-8">
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4"><span class="text-primary font-italic me-1">Guards</span> Details</p>
-                                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-12 border border-info border-3 rounded">
+                        <p class="mb-4"><span class="text-primary font-italic me-1">Guards</span> Details</p>
+                        <table class="table table-responsive col-auto ">
+                            <thead>
+                                <th>Sr no.</th>
+                                <th>Guard Name</th>
+                                <th>Guard Number</th>
+                                <th>Guard Gender</th>
+                            </thead>
+                            <tbody>
+                                <?php $i=0;foreach ($gu_detail as $mg) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo ++$i;?></td>
+                                        <td><?php echo $mg->full_name;?></td>
+                                        <td><?php echo $mg->mobile_no;?></td>
+                                        <td><?php echo $mg->gender;?></td>
+                                    </tr>
+                                <?php
+                                } ?>
+                            <tr>
+                                <td colspan="4"><a href="service" class="btn btn-primary col">Hire Guard</a></td>
+                            </tr>        
+                            </tbody>    
+                            
+                        </table>
+                        
                     </div>
 
                 </div>
@@ -123,11 +125,11 @@ if ($_SESSION['username']) {
                         <div class="card mb-4 mb-md-1">
                             <div class="card-body">
                                 <p class="mb-4 text-primary font-italic me-1">Feedback</p>
-                                <form action="" method="post">
+                                <form action="" method="post" id="feedback_form">
                                     <div class="form-group">
                                         <label for="customer_name">Customer Name</label>
-                                        <input type="text" name="c_name" value="Customer Name" readonly
-                                            class="form-control">
+                                        <input type="text" name="c_name" value="<?php echo $_SESSION['username'] ?>"
+                                            readonly class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="customRange3" class="form-label">Review</label>
@@ -135,11 +137,11 @@ if ($_SESSION['username']) {
                                             id="customRange3" name="star">
                                     </div>
                                     <div class="form-group">
-                                        <label for="feedback">Feedback</label>
-                                        <textarea name="feedback" id="" cols="30" class="form-control"></textarea>
+                                        <label for="Feedback">Feedback</label>
+                                        <textarea  cols="30" class="form-control" name="comment" form="feedback_form" ></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" value="Submit" class="btn btn-primary rounded-circle">
+                                   <input type="submit" value="Submit" name="feedback" class="btn btn-primary rounded-circle">
                                     </div>
                                 </form>
                             </div>
@@ -150,24 +152,35 @@ if ($_SESSION['username']) {
                         <div class="card mb-4 mb-md-2">
                             <div class="card-body">
                                 <p class="mb-4 text-danger font-italic me-1">Complain</p>
-                                <div class="form-group">
-                                    <label for="customer_name">Customer Name</label>
-                                    <input type="text" name="c_name" value="Customer Name" readonly
-                                        class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="guard_name">Customer Name</label>
-                                    <select name="guard_name" id="" class="form-select">
-                                        <option>-----Guard's You Have-----</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="complain">Complain</label>
-                                    <textarea name="complain" id="" cols="30" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Submit" class="btn btn-danger rounded-circle">
-                                </div>
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <label for="customer_name">Customer Name</label>
+                                        <input type="text" name="c_name" value="<?php echo $_SESSION['username'] ?>"
+                                            readonly class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="guard_name">Customer Name</label>
+                                        <select name="guard_name" id="guard_name" class="form-select">
+
+                                            <option>-----Guard's You Have-----</option>
+                                            <?php foreach ($gu_detail as $mg) {
+                                                
+                                                ?>
+                                                <option value="<?php echo $mg->gu_id; ?>"><?php echo $mg->full_name; ?>
+                                                </option>
+                                                <?php
+                                                
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="complain">Complain</label>
+                                        <textarea name="comment" id="" cols="30" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Submit" name="complain" class="btn btn-danger rounded-circle">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -189,24 +202,42 @@ if ($_SESSION['username']) {
                                         <th>Request Status</th>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($res1 as $mr){?>
-                                        <tr>
-                                        <td></td>
-                                        <td><?php echo $mr->number_of_guard;?></td>
-                                        <td><?php echo $mr->for_where;?></td>
-                                        <td><?php echo $mr->address;?></td>
-                                        <td><?php echo $mr->remark;?></td>
-                                        <td><?php echo $mr->request_status;?></td>
-                                        </tr>
-                                        <?php }?>
-                                      
+                                        <?php
+                                        $i = 0;
+                                        if (!empty($fetch1)) {
+                                            foreach ($fetch1 as $mr) { ?>
+                                                <tr>
+                                                    <td><?php echo ++$i; ?></td>
+                                                    <td><?php echo $mr->number_of_guard; ?></td>
+                                                    <td><?php echo $mr->for_where; ?></td>
+                                                    <td><?php echo $mr->address; ?></td>
+                                                    <td><?php echo $mr->remarks; ?></td>
+                                                    <?php if ($mr->request_status == 'pending') { ?>
+                                                        <td class="text-primary"><?php echo $mr->request_status; ?></td><?php } ?>
+                                                    <?php if ($mr->request_status == 'approve') { ?>
+                                                        <td class="text-success"><?php echo $mr->request_status; ?></td><?php } ?>
+                                                    <?php if ($mr->request_status == 'reject') { ?>
+                                                        <td class="text-danger"><?php echo $mr->request_status; ?></td><?php } ?>
+                                                </tr>
+                                            <?php }
+                                        } else {
+                                            ?>
+                                            <?php
+                                            echo "<tr><td colspan='6' class='text-center'>No Data Found</td></tr>";
+                                        }
+                                        ?>
                                     </tbody>
-                                </table>                               
+                                </table>
                             </div>
                         </div>
                     </div>
-                
+
+                </div>
             </div>
         </div>
+
+
+        <?php require_once("phpcode/footer.php"); ?>
+
     </div>
 </section>

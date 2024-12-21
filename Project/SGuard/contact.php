@@ -1,5 +1,11 @@
-<?php include_once('header.php');?>
+<?php include_once('header.php');
+if(!isset($_SESSION['username']))
+{
+
+}
+?>
   <!-- contact section -->
+   
   <section class="contact_section layout_padding">
     <div class="container-fluid">
       <div class="row">

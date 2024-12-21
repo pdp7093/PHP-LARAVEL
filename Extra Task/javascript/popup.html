@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+</head>
+<body>
+    <button onclick="on_alert()">Alert</button>
+    <button onclick="on_confirm()">Comfirm</button>
+    <button onclick="on_prompt()">Prompt</button>
+
+    <script>
+        function on_alert()
+        {
+            alert('hi i am alert popup');
+        }
+        function on_confirm()
+        {
+            var ans=confirm('Are you sure want to perform task');
+            if(ans==true)
+        {
+            alert('task success');
+        }
+        }
+
+        function on_prompt()
+        {
+            var ans=prompt('Please enter the code');
+            if(ans=='deepak')
+            {
+                alert('success');
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 $url_array = explode('/', $_SERVER['REQUEST_URI']); // current page url
 $url = end($url_array);
 $title = $url;
+
 function active($currect_page)
 {
   $url_array = explode('/', $_SERVER['REQUEST_URI']); // current page url
@@ -14,6 +15,9 @@ function active($currect_page)
   }
 }
 //session_start();
+//session_start(); 
+
+
 ?>
 
 
@@ -31,7 +35,7 @@ function active($currect_page)
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>SGuard | <?php echo strtoupper($title); ?></title>
+  <title>SGuard | <?php  echo strtoupper(urlencode($title));?></title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -100,8 +104,7 @@ function active($currect_page)
               <?php 
               if (isset($_SESSION['username'])) {
                 ?>
-                <a class="nav-link <?php echo active('Profile Page'); ?>" href="Profile Page"><i class="fa-solid fa-user"><?php echo $_SESSION['username'];?></i>
-                
+                <a class="nav-link <?php echo active('Profile'); ?>" href="Profile"><i class="fa-solid fa-user"><?php echo $_SESSION['username'];?></i>
                 </a>
               <?php } else { ?>
                 <a class="nav-link <?php echo active('login'); ?>" href="login">Login/Signup<i class="bi bi-door-open"></i>

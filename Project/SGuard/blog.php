@@ -1,4 +1,6 @@
-<?php include_once('header.php');?>
+<?php include_once('header.php');
+
+?>
   <!-- story section -->
   <div class="layout_padding">
 

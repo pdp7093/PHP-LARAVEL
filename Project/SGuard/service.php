@@ -1,4 +1,6 @@
-<?php include_once('header.php');?>
+<?php include_once('header.php');
+
+?>
 
 
 
@@ -55,6 +57,10 @@
       <textarea name="address" id="address" cols="10" rows="5" class="form-control"required></textarea>
     </div>
     <div class="form-group mb-3">
+      <label for="posting_date" class="form-label">Posting Date</label>
+      <input type="date" name="posting_date" id="" class="form-control">
+    </div>
+    <div class="form-group mb-3">
       <label for="remark " class="form-label">Any Suggestion?</label>
       <textarea name="remark" id="address" cols="10" rows="5" class="form-control"></textarea>
     </div>
@@ -66,7 +72,10 @@
   </div>
   </section>
   <?php }else{?>
-	
+	<div class="mt-5 border-top alert alert-primary text-center">
+    <h4 class=" text-dark font-weight-bold">To Book Guards, First Create Your Account.</h4>
+    <a href="login" class="btn btn-outline-info text-dark btn-lg rounded-5 "style="letter-spacing: 2px;">Login/Signup</a>
+  </div>
   <?php }?>
   <!-- security section -->
 

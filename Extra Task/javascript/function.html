@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>
+			Function Example
+		</title>
+	</head>
+	<body>
+		<center><h1>Function Javascript Example</h1></center>
+		<hr>
+		<h2>Simple Function</h2>
+		<script>
+			function add()
+			{
+				var a,b,c;
+				a=10;
+				b=20;
+				
+				c=a+b;
+				
+				document.write(c);
+			}
+			add();
+		</script>
+		
+		<hr>
+		<h2>Paramter Simple Function </h2>
+		<script>
+			function add(a,b)
+			{
+				var c;
+				c=a+b;
+				
+				document.write(c);
+			}
+			add(10,20);
+		</script>
+		<hr>
+		<h2>Paramter Function with Default Value</h2>
+		<script>
+			function add(a=40,b=10)
+			{
+				var c;
+				c=a+b;
+				
+				document.write(c);
+			}
+			add();
+		</script>
+	</body>
+</html>

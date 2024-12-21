@@ -30,7 +30,7 @@
                                     <tbody>
                                         <?php foreach($manage_customer as $mc) { ?>
                                         <tr>
-                                            <td><?php echo $mc->id;?></td>
+                                            <td><?php echo $mc->cust_id;?></td>
                                             <td><img src="../images/Customer/<?php echo $mc->image;?>" alt="" width="40rem"></td>
                                             <td><?php echo $mc->firstname." ".$mc->lastname;?></td>
                                             <td><?php echo $mc->email;?></td>
@@ -38,10 +38,10 @@
                                             <td><?php echo $mc->gender;?></td>
                                             <td><?php echo $mc->address;?></td>
                                             <td><?php echo $mc->username;?></td>
-                                           
+                                            <input type="hidden" id="confirmdelete" name="confirmForm">
                                             <td>
 												<a href="" class="btn btn-primary">Edit</a>
-												<a href="delete?del_customer=<?php echo $mc->id?>" class="btn btn-danger mx-2">Delete</a>
+												<a href="delete?del_customer=<?php echo $mc->cust_id?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
                                         </tr>
                                         <?php } ?>
@@ -57,5 +57,6 @@
         </div>
     </div>
 </div>
+
 <!-- Footer Section -->
 <?php include_once('footer.php'); ?>

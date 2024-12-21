@@ -35,7 +35,7 @@
                                         <?php foreach($manage_guard as $data){?>
                                         <tr>
                                             <td><?php echo $data->gu_id;?></td>
-                                            <td><img src="../guards/<?php echo $data->profile_image;?>"></td>
+                                            <td><img src="../guards/<?php echo $data->email ?>/<?php echo $data->profile_image;?>" height="50rm"></td>
                                             <td><?php echo $data->full_name;?></td>
                                             <td><?php echo $data->email;?></td>
                                             <td><?php echo $data->mobile_no;?></td>
@@ -45,7 +45,7 @@
                                             <td><?php echo $data->disability;?></td>
                                             <td>
                                                 <a href="" class="btn btn-primary">Edit</a>
-                                                <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
+                                                <a href="delete?del_guard=<?php echo $data->gu_id?>" class="btn btn-danger mx-2">Delete</a>
                                             </td>
                                         </tr>
                                         <?php }?>

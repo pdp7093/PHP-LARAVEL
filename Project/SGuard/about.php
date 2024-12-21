@@ -19,16 +19,13 @@
             Welcome
           </h3>
           <h2>
-            Welcome security services Company
+            Welcome in security services Company
           </h2>
           <p>
-            There are many variations of passages of Lorem Ipsum available,
-            but the majority have suffered alteration in some form, by
-            injected humour, or randomised words which don't look even
-            slightly believable. If you are going to use a passage of Lorem
-            Ipsum, you need to be sure there isn't It is a long established
-            f act that a reader will be distracted by the readable content
-            of a page whe
+          Welcome to SGuard, your trusted platform for hiring professional security guards. Whether it’s safeguarding your home, office, or events, we bring you verified and reliable guards to ensure complete peace of mind.
+          </p>
+          <p>
+          With a focus on safety and convenience, SGuard simplifies the process of finding skilled personnel. Create your account, explore our services, and hire guards tailored to your needs—all in just a few clicks!
           </p>
 
         </div>
@@ -37,60 +34,6 @@
   </div>
 </section>
 <!-- end welcome section -->
-
-<!--Success Story Section -->
-<div class="layout_padding  p-4">
-  <div class="container-fluid">
-    <div class="">
-      <div class="col-md-12">
-        <div class="success_detail ">
-          <h3>Our Success Story</h3>
-        </div>
-        <div class="success_detail">
-          <h2>Customer Feed-Back</h2>
-          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card col-md-6">
-                  <div class="card-body ">
-                    <h1>Customer Feedback</h1>
-                  </div>
-                </div>
-              </div>
-              <?php foreach ($feedback as $fk) {
-                //echo $fk->name;
-
-                echo "<div class='carousel-item '>";
-                  echo "<div class='card col-md-6'>";
-                  echo "<div class='card-header border>'".$fk->name."</div>";
-                  echo "<div class='card-body'>
-                        ".$fk->username."
-                        </div>";
-                  echo "</div>";
-                echo "</div>";
-              }
-              ?>
-            </div>
-            <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
-              <span class="carousel-control-prev-icon bg-dark " aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </button>
-            <button class="carousel-control-next " type="button" data-target="#carouselExampleFade" data-slide="next">
-              <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<!--End of Success Story Section -->
-
-
-
-
 <!-- footer section -->
 <?php include_once('footer.php'); ?>
 <!-- footer section -->

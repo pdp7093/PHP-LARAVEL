@@ -8,7 +8,7 @@
                     <!--    Hover Rows  -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Manage Contact
+                           Posting Detail
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -19,24 +19,25 @@
                                             
                                             <th>Posting Date</th>
                                             <th>Guard Name</th>
-                                            <th>address</th>
-                                            <th>hireby</th>
-                                            <th>action</th>
+                                            <th>Posting Address</th>
+                                            <th>Hireby</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php  $i=0; foreach($posting_detail as $pd){?>
                                         <tr>
-                                            <td>1</td>
-                                            
-                                            <td>Posting Date</td>
-                                            <td>Guard Name</td>                                        
-                                            <td>address</td>
-                                            <td>Hire By</td>
+                                            <td><?php echo ++$i;?></td>                                            
+                                            <td><?php echo $pd->posting_date?></td>
+                                            <td><?php echo $pd->full_name?></td>
+                                            <td><?php echo $pd->address?></td>
+                                            <td><?php echo $pd->firstname. $pd->lastname?></td>
                                             <td>
 												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
+												<a href="delete?posting_delete=<?php echo $pd->post_id?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
-                                        </tr>                                        
+                                        </tr>                                 
+                                        <?php }?>       
                                     </tbody>
                                 </table>
                             </div>

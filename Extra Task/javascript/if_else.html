@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>
+			Conditional Example
+		</title>
+	</head>
+	<body>
+		<center><h1>Conditional's Javascript Example</h1></center>
+		<h2>IF-Else</h2>
+		<script>
+			var a,b;
+			a=10;
+			b=20;
+			if(a<b)
+			{
+				document.write(`A is Not Greater Than B `);
+			}
+			else
+			{
+				document.write("B is Not Greater Than A");
+			}
+		</script>
+		<hr>
+		<h2>IF-Elseif-Else</h2>
+		<script>
+			var a,b,d;
+			a=10;
+			b=20;
+			//c=30;
+			d=30;
+			if(a==d )
+			{
+				document.write("A is Equal to D");
+			}
+			else if(b==d)
+			{
+				document.write("B is Equal to D");
+			}
+			else
+			{
+				document.write("No One Number Match Please Check Your Data !");
+			}
+		</script>
+		<hr>
+		<h2>Neseted If</h2>
+		<script>
+			var a,b,d;
+			a=10;
+			b=20;
+			//c=30;
+			d=30;
+			if(a<b)
+			{
+				if(a<d)
+				{
+					document.write("A is Smaller Than B and C");
+				}
+				else
+				{
+					document.write("A is Smaller Than B");
+				}
+			}
+		</script>
+		<hr>
+		<h2>Swtich Case</h2>
+		<script>
+			var age=18;
+			switch(age)
+			{
+				case 15:
+					document.write("not able to vote");
+				break;
+				case 18:
+					document.write("Able to vote");
+				break;
+				default:
+					document.write("default case");
+				break;
+			}
+		</script>
+		</script>
+	</body>
+</html>

@@ -47,10 +47,7 @@ if(isset($_SESSION['email']))
                   type="submit" name="login">Login</button>
 
                 <hr class="my-1">
-                <a href="#">Forgot passowrd?</a>
-                <div class="form-outline text-center my-3">
-                  Not a member yet?<a href="signup">Create an Account</a>
-                </div>
+                
               </form>
             </div>
           </div>
