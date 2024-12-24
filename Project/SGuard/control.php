@@ -11,7 +11,7 @@ class control extends model
 
 		switch ($path) {
 			case '/home':
-				include_once('home.php');
+				include_once('index.php');
 				break;
 
 			case '/about':

@@ -1,22 +1,31 @@
+<?php //session_start(); 
+if (!isset($_SESSION['employee_email'])) {
+    header("location:login");
+}
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGuard Employee </title>
+    <title>SGuard Admin </title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    
+
     <!--CUSTOM BASIC STYLES-->
     <link href="assets/css/basic.css" rel="stylesheet" />
+    <link href="../css/font.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/aa8cf25ef0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -34,13 +43,16 @@
 
             <div class="header-right">
 
-                <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i
-                        class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i
-                        class="fa fa-bars fa-2x"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i
-                        class="fa fa-exclamation-circle fa-2x"></i></a>
 
+                <?php if (isset($_SESSION['employee_email'])) { ?>
+                    <a href="logout" class="btn btn-danger" title="Logout">
+                        <h4>LOGOUT<span class="fa fa-exclamation-circle "></span></h4>
+                    </a>
+                <?php } else { ?>
+                    <a href="login" class="btn btn-info " title="Login">
+                        <h3>LOGIN <span class="fa-solid fa-right-to-bracket "></span></h3>
+                    </a>
+                <?php } ?>
             </div>
         </nav>
         <!-- /. NAV TOP  -->
@@ -50,20 +62,25 @@
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="assets/img/user.png" class="img-thumbnail" />
+                            <?php $username = $_SESSION['email'];
+                            $fstchar = substr($username, 0, 1);
+                            ?>
+                            <p  class=" header-icon text-uppercase ethno text-center m-3 ">
+                                <?php echo $fstchar ?></p>
 
-                            <div class="inner-text">
-                                Jhon Deo Alex
+                            <div class="header-username">
+                                <h4 class="text-uppercase"> <?php echo $_SESSION['email']; ?></h4>
                                 <br />
-                                <small>Last Login : 2 Weeks Ago </small>
+
                             </div>
+
                         </div>
 
                     </li>
 
 
                     <li>
-                        <a class="active-menu" href="Dashboard"><i class="fa fa-dashboard "></i>Employee Dashboard</a>
+                        <a class="active-menu" href="Dashboard"><i class="fa fa-dashboard "></i>Admin Dashboard</a>
                     </li>
                     <li>
                         <a href="#">Guards <span class="fa arrow"></span></a>
@@ -76,19 +93,32 @@
                             </li>
                             <li>
                                 <a href="Posting">Guards Posting</a>
-                            </li>    
+                            </li>
 
                         </ul>
                     </li>
-                   
+
                     <li>
                         <a href="Manage Customer">Manage Customers</a>
                     </li>
+                    <li>
+                        <a href="#">Employee <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
 
+                            <li>
+                                <a href="Add Employee"></i>Add Employee </a>
+                            </li>
+                            <li>
+                                <a href="Manage Emplpoyee">Manage Employee</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
                     <li>
                         <a href="Manage Contact us">Manage Contact us</a>
                     </li>
-                    
+
                     <li>
                         <a href="Hiring Request">Hiring Request</a>
                     </li>
@@ -96,7 +126,7 @@
                     <li>
                         <a href="Manage Complain">Manage Complain</a>
                     </li>
-                    
+
                     <li>
                         <a href="Manage Feedback">Manage Feedback</a>
                     </li>

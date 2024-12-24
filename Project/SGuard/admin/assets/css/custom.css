@@ -20,6 +20,7 @@
     -webkit-border-radius:5px;
     margin-bottom:40px;
 }
+
     .main-box a,.main-box a:hover {
         color:#fff;
         text-decoration:none;
@@ -42,7 +43,20 @@
 /*==============================================
     CHAT WINDOW  STYLES    
     =============================================*/
-
+.header-username
+{
+    color: white;
+    margin-top: 50px;
+    font-style:italic;
+}
+.header-icon
+{
+    font-size:80px;
+    border-radius: 2px;
+    font-weight: bold;
+    color:aqua;
+    margin-top: 30px;
+}
 .chat-widget-main {
     max-height:500px;
     padding:20px;

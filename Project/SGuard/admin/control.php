@@ -101,11 +101,11 @@ class control extends model
 				$manage_guard = $this->select('guards');
 				include_once('manage_guard.php');
 				break;
-			
+
 			case '/Guard Posting':
 				//$posting = $this->simple_joins('posting', 'guards', 'posting.gu_id=guards.gu_id', 'customers', 'posting.cust_id=customers.cust_id');
-				$where=array("status"=>"available");
-			
+				$where = array("status" => "available");
+
 				$res1 = $this->select_where('guards', $where);
 				$fetch1 = [];
 				if ($res1->num_rows > 0) {
@@ -114,17 +114,44 @@ class control extends model
 					}
 
 				}
-				
-				if(isset($_REQUEST['request_id']))
-				{
+				//Fetch Request Data
+				$cust_id = '';
+				$request_status = '';
+				$request_where = '';
+				if (isset($_REQUEST['request_id'])) {
 					$id = $_REQUEST['request_id'];
-					$where=array("req_id"=>$id);
-					$data=$this->select_where('request',$where);
-					$fetch=$data->fetch_object();
-					$cust_id=$fetch->cust_id;
-						
+					$request_where = array("req_id" => $id);
+					$data = $this->select_where('request', $request_where);
+					$fetch = $data->fetch_object();
+					$request_status = $fetch->request_status;
+					$cust_id = $fetch->cust_id;
+
 				}
-				
+				$status_where = array("request_status" => "approve");
+				//Insert Data in posting table and update status
+				$update = array("status" => "posted");
+				if (isset($_REQUEST['submit'])) {
+					$posting_date = $_REQUEST['posting_date'];
+					$selectlist = $_REQUEST['selectedList'];
+					$address = $_REQUEST['address'];
+					$selectlist;
+					$arr = explode(',', $selectlist);
+					//print_r($arr);
+					foreach ($arr as $ar) {
+						$guard_id = array("gu_id" => $ar);
+
+						$data = array("posting_date" => $posting_date, "gu_id" => $ar, "address" => $address, "cust_id" => $cust_id);
+						$res = $this->insert('posting', $data);
+						if ($res) {
+							$check = $this->update('guards', $update, $guard_id);
+							if ($check) {
+								$request_update = $this->update('request', $status_where, $request_where);
+
+							}
+						}
+					}
+				}
+
 				include_once('guard_posting.php');
 				break;
 			case '/Posting':
@@ -135,6 +162,59 @@ class control extends model
 			case '/Manage Customer':
 				$manage_customer = $this->select('customers');
 				include_once('manage_customer.php');
+				break;
+			case '/edit_profile':
+				if (isset($_REQUEST['update'])) {
+					$update = $_REQUEST['update'];
+					$where = array("cust_id" => $update);
+					$res = $this->select_where('customers', $where);
+					$fetch = $res->fetch_object();
+					$old_image = $fetch->image;
+
+					if (isset($_REQUEST['submit'])) {
+						$username = $_REQUEST['username'];
+						$firstname = $_REQUEST['firstname'];
+						$lastname = $_REQUEST['lastname'];
+						$email = $_REQUEST['email'];
+						$mobile_no = $_REQUEST['mobile_no'];
+
+						$gender = $_REQUEST['gender'];
+						$address = $_REQUEST['address'];
+						if ($_FILES['image']['size'] > 0) {
+							$image = $_FILES['image']['name'];
+							$path = "../images/Customer/" . $image;
+							$tmp_img = $_FILES['image']['tmp_name'];
+							move_uploaded_file($tmp_img, $path);
+
+							$data = array("username" => $username, "firstname" => $firstname, "lastname" => $lastname, "email" => $email, "mobile_no" => $mobile_no, "gender" => $gender, "address" => $address, "image" => $image);
+
+							$res = $this->update('customers', $data, $where);
+
+							if ($res) {
+								$_SESSION['username'] = $username;
+								unlink("../images/Customer/" . $old_image);
+								echo "<script>
+								alert('Upadte successful !');
+								window.location='Manage Customer';
+							</script>";
+							}
+						} else {
+							$data = array("username" => $username, "firstname" => $firstname, "lastname" => $lastname, "email" => $email, "mobile_no" => $mobile_no, "gender" => $gender, "address" => $address);
+
+							$res = $this->update('customers', $data, $where);
+
+							if ($res) {
+								$_SESSION['username'] = $username;
+								echo "<script>
+								alert('Upadte successful !');
+								window.location='Manage Customer';
+								</script>";
+							}
+						}
+
+					}
+				}
+				include_once('edit_profile.php');
 				break;
 
 			case '/Add Employee':

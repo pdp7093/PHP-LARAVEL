@@ -40,7 +40,7 @@
                                             <td><?php echo $mc->username;?></td>
                                             <input type="hidden" id="confirmdelete" name="confirmForm">
                                             <td>
-												<a href="" class="btn btn-primary">Edit</a>
+												<a href="edit_profile?update=<?php echo $mc->cust_id?>" class="btn btn-primary">Edit</a>
 												<a href="delete?del_customer=<?php echo $mc->cust_id?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
                                         </tr>

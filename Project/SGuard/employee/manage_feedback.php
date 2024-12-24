@@ -16,19 +16,22 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>   
-                                            <th>customer Name</th>                                        
+                                            <th>Customer Name</th>                          
+                                            <th>Customer Username</th>              
                                             <th>Feedback</th>
-                                            <th>action</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $i=0;foreach($manage_feedback as $mf)?>
                                         <tr>
-                                            <td>1</td>                                            
-                                            <td>cuustomer</td>
-                                            <td>Feedback</td>
+                                            <td><?php echo ++$i; ?></td>                                            
+                                            <td><?php echo $mf->firstname." ".$mf->lastname; ?></td>
+                                            <td><?php echo $mf->username?></td>
+                                            <td><?php echo $mf->feedback;?></td>
                                             <td>
-												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
+												
+												<a href="delete?feedback=<?php echo $mf->feed_id ?>" class="btn btn-danger mx-2">Delete</a>
 											</td>
                                         </tr>
                                         

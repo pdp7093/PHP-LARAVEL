@@ -10,14 +10,17 @@
                         <div class="panel-heading">
                             Manage Guard
                         </div>
-                        <div class="panel-body">  
-						
-                            <div class="table-responsive">
+                        <div class="panel-body">
+                            <div class="table-responsive ">
+                                <!--Dummy Data For Testing-->
+                                <h1 class=" text-center text-success ">Dummy Data</h1>
+									
+                                <hr>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
+                                            <th>Profile photo</th>
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Mobile_no</th>
@@ -29,68 +32,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       <?php foreach ($manage_guard as $data) { ?>
-                                            <tr>
-                                                <td><?php echo $data->id; ?></td>
-                                                <td><?php echo $data->name; ?></td>
-                                                <td><?php echo $data->email; ?></td>
-                                                <td><?php echo $data->username; ?></td>
-                                                <td>
-                                                    <a href="" class="btn btn-primary">Edit</a>
-                                                    <a href="delete?del_guard=<?php echo $data->id?>" class="btn btn-danger mx-2">Delete</a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?> 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-						<!--Panel Body End-->
-					</div>
-                    <!-- End  Hover Rows  -->
-                </div>
-              <!--col-md-12 end-->
-			  
-			  <div class="col-md-12">
-                    <!--    Hover Rows  -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Manage Guard
-                        </div>
-                        <div class="panel-body">  
-						
-                            <div class="table-responsive">
-								<h1>Dummy Data</h1>
-                                <table class="table table-hover">
-                                    <thead>
+                                        <?php foreach($manage_guard as $data){?>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-											<th>Username</th>
-                                            <th>action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-										<?php foreach($manage_guard as $data) {?>
-                                        <tr>
-                                            <td><?php echo $data->id; ?></td>
-											<td><?php echo $data->name; ?></td>
-											<td><?php echo $data->email; ?></td>
-											<td><?php echo $data->username; ?></td>
+                                            <td><?php echo $data->gu_id;?></td>
+                                            <td><img src="../guards/<?php echo $data->email ?>/<?php echo $data->profile_image;?>" height="50rm"></td>
+                                            <td><?php echo $data->full_name;?></td>
+                                            <td><?php echo $data->email;?></td>
+                                            <td><?php echo $data->mobile_no;?></td>
+                                            <td><?php echo $data->gender;?></td>
+                                            <td><?php echo $data->address;?></td>
+                                            <td><?php echo $data->id_proof;?></td>
+                                            <td><?php echo $data->disability;?></td>
                                             <td>
-												<a href="" class="btn btn-primary">Edit</a>
-												<a href="" class="btn btn-danger mx-2">Delete</a>
-											</td>
+                                                <a href="" class="btn btn-primary">Edit</a>
+                                                <a href="delete?del_guard=<?php echo $data->gu_id?>" class="btn btn-danger mx-2">Delete</a>
+                                            </td>
                                         </tr>
-                                       <?php } ?>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-						<!--Panel Body End-->
-					</div>
+                    </div>
                     <!-- End  Hover Rows  -->
                 </div>
+
             </div>
         </div>
     </div>

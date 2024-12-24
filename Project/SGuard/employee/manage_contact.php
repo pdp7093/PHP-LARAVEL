@@ -25,7 +25,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       <?php foreach($manage_contact as $d){?>
+									<?php foreach($manage_contact as $d){?>
                                         <tr>
 											
                                             <td><?php echo $d->con_id;?></td>
@@ -41,7 +41,6 @@
 											</td>
                                         </tr>
 									<?php } ?>
-                                        
                                     </tbody>
                                 </table>
                             </div>

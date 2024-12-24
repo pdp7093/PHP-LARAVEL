@@ -16,7 +16,12 @@
 	font-family: maximum;
 	src: url(fonts/Maximum\ Voltage.ttf);
 }
+@font-face {
+	font-family: ethno;
+	src: url(fonts/Ethnocentric\ Rg\ It.otf);
+}
 .daggerdancer{font-family:daggerdancer;}
 .techno{font-family:techno;}
 .inter{font-family: inter;}
 .maximum{font-family: maximum}
+.ethno{font-family: ethno}

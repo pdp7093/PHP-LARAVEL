@@ -1,6 +1,5 @@
 <?php //session_start(); 
-if(!isset($_SESSION['email']))
-{
+if (!isset($_SESSION['email'])) {
     header("location:login");
 }
 ?>
@@ -20,6 +19,7 @@ if(!isset($_SESSION['email']))
 
     <!--CUSTOM BASIC STYLES-->
     <link href="assets/css/basic.css" rel="stylesheet" />
+    <link href="../css/font.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
@@ -43,11 +43,15 @@ if(!isset($_SESSION['email']))
 
             <div class="header-right">
 
-               
+
                 <?php if (isset($_SESSION['email'])) { ?>
-                    <a href="logout" class="btn btn-danger" title="Logout"><h4>LOGOUT<span class="fa fa-exclamation-circle "></span></h4></a>
+                    <a href="logout" class="btn btn-danger" title="Logout">
+                        <h4>LOGOUT<span class="fa fa-exclamation-circle "></span></h4>
+                    </a>
                 <?php } else { ?>
-                    <a href="login" class="btn btn-info " title="Login"><h3>LOGIN <span class="fa-solid fa-right-to-bracket "></span></h3></a>
+                    <a href="login" class="btn btn-info " title="Login">
+                        <h3>LOGIN <span class="fa-solid fa-right-to-bracket "></span></h3>
+                    </a>
                 <?php } ?>
             </div>
         </nav>
@@ -58,13 +62,18 @@ if(!isset($_SESSION['email']))
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="assets/img/user.png" class="img-thumbnail" />
+                            <?php $username = $_SESSION['email'];
+                            $fstchar = substr($username, 0, 1);
+                            ?>
+                            <p  class=" header-icon text-uppercase ethno text-center m-3 ">
+                                <?php echo $fstchar ?></p>
 
-                            <div class="inner-text">
-                                <?php echo $_SESSION['email']; ?>
+                            <div class="header-username">
+                                <h4 class="text-uppercase"> <?php echo $_SESSION['email']; ?></h4>
                                 <br />
-                                <small>Last Login : 2 Weeks Ago </small>
+
                             </div>
+
                         </div>
 
                     </li>
