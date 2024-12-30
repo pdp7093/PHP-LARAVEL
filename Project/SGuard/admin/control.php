@@ -48,7 +48,7 @@ class control extends model
 			case '/Add Guard':
 				if (isset($_REQUEST['submit'])) {
 					$full_name = $_REQUEST['full_name'];
-					$email = $_REQUEST['email'];
+					$email = $_REQUEST['g_email'];
 					$mobile_no = $_REQUEST['mobile_no'];
 					$gender = $_REQUEST['gender'];
 					$address = $_REQUEST['address'];
@@ -83,7 +83,7 @@ class control extends model
 						echo "Failed to upload image.<br>";
 					}
 
-					$data = array("full_name" => $full_name, "email" => $email, "mobile_no" => $mobile_no, "gender" => $gender, "address" => $address, "id_proof" => $pdf, "disability" => $disability, "profile_image" => $image);
+					$data = array("full_name" => $full_name, "g_email" => $email, "mobile_no" => $mobile_no, "gender" => $gender, "address" => $address, "id_proof" => $pdf, "disability" => $disability, "profile_image" => $image);
 
 					$res = $this->insert('guards', $data);
 
@@ -139,7 +139,10 @@ class control extends model
 					//print_r($arr);
 					foreach ($arr as $ar) {
 						$guard_id = array("gu_id" => $ar);
-
+						$check_where=array("cust_id"=>$cust_id,"gu_id"=>$ar);
+						$check_posted=$this->select_where('posting',$check_where);
+						$chk = $check_posted->num_rows;
+						
 						$data = array("posting_date" => $posting_date, "gu_id" => $ar, "address" => $address, "cust_id" => $cust_id);
 						$res = $this->insert('posting', $data);
 						if ($res) {
@@ -301,8 +304,9 @@ class control extends model
 					$where = array("gu_id" => $id);
 					$select = $this->select_where('guards', $where);
 					$fetch = $select->fetch_object();
+					$email=$fetch->g_email;
 					$folder = "../guards";
-					$folderToDelete = $folder . '/' . $_SESSION['email'];
+					$folderToDelete = $folder . '/' .$email;
 					$old_image = $fetch->profile_image;
 					$id_proof = $fetch->id_proof;
 

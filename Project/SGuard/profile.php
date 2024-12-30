@@ -94,8 +94,10 @@ if ($_SESSION['username']) {
                         <table class="table table-responsive col-auto ">
                             <thead>
                                 <th>Sr no.</th>
+                                <th>Guard Image</th>
                                 <th>Guard Name</th>
                                 <th>Guard Number</th>
+                                <th>Guard Email</th>
                                 <th>Guard Gender</th>
                             </thead>
                             <tbody>
@@ -103,8 +105,10 @@ if ($_SESSION['username']) {
                                 ?>
                                     <tr>
                                         <td><?php echo ++$i;?></td>
+                                        <td><img src="guards/<?php echo $mg->g_email ?>/<?php echo $mg->profile_image?>" alt="" height="50rm"></td>
                                         <td><?php echo $mg->full_name;?></td>
                                         <td><?php echo $mg->mobile_no;?></td>
+                                        <td><?php echo $mg->g_email;?></td>
                                         <td><?php echo $mg->gender;?></td>
                                     </tr>
                                 <?php

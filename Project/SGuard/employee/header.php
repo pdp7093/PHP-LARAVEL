@@ -62,14 +62,14 @@ if (!isset($_SESSION['employee_email'])) {
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <?php $username = $_SESSION['email'];
+                            <?php $username = $_SESSION['employee_email'];
                             $fstchar = substr($username, 0, 1);
                             ?>
                             <p  class=" header-icon text-uppercase ethno text-center m-3 ">
                                 <?php echo $fstchar ?></p>
 
                             <div class="header-username">
-                                <h4 class="text-uppercase"> <?php echo $_SESSION['email']; ?></h4>
+                                <h4 class="text-uppercase"> <?php echo $_SESSION['employee_email']; ?></h4>
                                 <br />
 
                             </div>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['employee_email'])) {
 
 
                     <li>
-                        <a class="active-menu" href="Dashboard"><i class="fa fa-dashboard "></i>Admin Dashboard</a>
+                        <a class="active-menu" href="Dashboard"><i class="fa fa-dashboard "></i>Employee Dashboard</a>
                     </li>
                     <li>
                         <a href="#">Guards <span class="fa arrow"></span></a>
@@ -101,20 +101,7 @@ if (!isset($_SESSION['employee_email'])) {
                     <li>
                         <a href="Manage Customer">Manage Customers</a>
                     </li>
-                    <li>
-                        <a href="#">Employee <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-
-                            <li>
-                                <a href="Add Employee"></i>Add Employee </a>
-                            </li>
-                            <li>
-                                <a href="Manage Emplpoyee">Manage Employee</a>
-                            </li>
-
-
-                        </ul>
-                    </li>
+                    
                     <li>
                         <a href="Manage Contact us">Manage Contact us</a>
                     </li>

@@ -1,10 +1,4 @@
-<?php
-session_start();
-if (isset($_SESSION['username'])) {
-    header('location:Profile');
-}
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,42 +9,29 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="css/bootstrap_4.css">
     <link rel="stylesheet" href="css/font.css">
     <title>SignIn</title>
-    <script type="text/javascript" src="js/validate.js"></script>
-
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-    <style>
-        .transbox {
-            background-color: rgba(255, 255, 255, 0.4);
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(100px);
-            padding: 50px;
-            margin: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            border: 2px solid;
-            border-radius: 1rem;
-        }
-    </style>
+    <script type="text/javascript" src="js/validate.js"></script>
 </head>
 
 <body>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-12 col-lg-6 col-xl-8">
-                <div class="card transbox">
-                    <div class="card-body p-5  ">
-                        <h2 class="mb-5 text-center 	 text-primary">SGuard</h2>
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem; border-color:blue;">
+                    <div class="card-body p-5 ">
+                        <h2 class="mb-5 text-center text-primary">SGuard</h2>
                         <hr style="border-color:black;">
-                        <h4 id="msg1" class="text-center" style="color:#FF0000; text-transform:capitalize"></h4>
+                        <h4 id="msg1" align="center" style="color:#FF0000; text-transform:capitalize"></h4>
                         <form action="" method="post" enctype="multipart/form-data" onsubmit="return register(this)">
                             <div class="form-outline mb-4 row">
                                 <div class="col-md-6">
                                     <label for="firstname">Firstname</label>
-                                    <input type="text" name="firstname" id="firstname" placeholder="Enter Firstname"
-                                        class="form-control">
+                                    <input type="text" name="firstname" id="fname" placeholder="Enter Firstname"
+                                        class="form-control" >
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="lastnamr">Lastname</label>
+                                    <label for="lastname">Lastname</label>
                                     <input type="text" name="lastname" id="lastname" class="form-control"
                                         placeholder="Enter Lastname">
                                 </div>
@@ -63,7 +44,7 @@ if (isset($_SESSION['username'])) {
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="mobile">Mobile No. </label>
-                                <input type="tel" name="mobile_no" id="mobile" class="form-control"
+                                <input type="text" name="mobile_no" id="mobile" class="form-control"
                                     placeholder="Enter mobile">
                             </div>
                             <div class="form-outline mb-4">
@@ -75,14 +56,21 @@ if (isset($_SESSION['username'])) {
                             </div>
 
                             <div class="form-outline row mb-4">
-                                <div class="form-group">
-                                    <label class="control-label ">Gender <span style="color:red">*</span></label>
-                                    <div class="col-sm-10">
-                                        Male <input type="radio" name="gender" value="male"
-                                            style="width: auto; height: auto;">
-                                        Female <input type="radio" name="gender" value="female"
-                                            style="width: auto; height: auto;">
-                                    </div>
+                                <label>Gender</label>
+                                <div class="radio col-md-4">
+                                    <label>
+                                        <input type="radio" name="gender" id="male" value="male">Male
+                                    </label>
+                                </div>
+                                <div class="radio col-md-4">
+                                    <label>
+                                        <input type="radio" name="gender" id="female" value="female">Female
+                                    </label>
+                                </div>
+                                <div class="radio col-md-4">
+                                    <label>
+                                        <input type="radio" name="gender" id="other" value="other">Other
+                                    </label>
                                 </div>
                             </div>
 

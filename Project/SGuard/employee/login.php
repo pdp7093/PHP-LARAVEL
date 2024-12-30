@@ -14,7 +14,7 @@ if(isset($_SESSION['email']))
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/bootstrap_4.css">
   <link rel="stylesheet" href="../css/font.css">
-  <title>Admin Login</title>
+  <title>Employee Login</title>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
@@ -27,7 +27,7 @@ if(isset($_SESSION['email']))
           <div class="card shadow-2-strong" style="border-radius: 1rem; border-color:blue;">
             <div class="card-body p-5 ">
 
-              <h2 class="mb-5 text-center daggerdancer text-primary">SGuard ADMIN</h2>
+              <h2 class="mb-5 text-center daggerdancer text-primary">SGuard Employee</h2>
               <hr style="border-color:black;">
               <form action="" method="post">
                 <div class="form-outline mb-4">

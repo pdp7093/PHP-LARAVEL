@@ -35,9 +35,9 @@
                                         <?php foreach($manage_guard as $data){?>
                                         <tr>
                                             <td><?php echo $data->gu_id;?></td>
-                                            <td><img src="../guards/<?php echo $data->email ?>/<?php echo $data->profile_image;?>" height="50rm"></td>
+                                            <td><img src="../guards/<?php echo $data->g_email ?>/<?php echo $data->profile_image;?>" height="50rm"></td>
                                             <td><?php echo $data->full_name;?></td>
-                                            <td><?php echo $data->email;?></td>
+                                            <td><?php echo $data->g_email;?></td>
                                             <td><?php echo $data->mobile_no;?></td>
                                             <td><?php echo $data->gender;?></td>
                                             <td><?php echo $data->address;?></td>

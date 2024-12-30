@@ -4,7 +4,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Admin DASHBOARD</h1>
+                        <h1 class="page-head-line">Employee DASHBOARD</h1>
                     </div>
                 </div>
                 <!-- /. ROW  -->

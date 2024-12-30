@@ -13,7 +13,7 @@ class control extends model
 				if (isset($_REQUEST['login'])) {
 					//session_start();
 					$email = $_REQUEST['email'];
-					$password = $_REQUEST['password'];
+					$password = md5($_REQUEST['password']);
 
 					$data = array("email" => $email, "password" => $password);
 
