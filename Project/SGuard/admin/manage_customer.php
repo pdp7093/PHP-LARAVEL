@@ -23,8 +23,8 @@
                                             <th>gender</th>
                                             <th>Address</th>
                                             <th>Username </th>
-                                            
                                             <th>action</th>
+                                            <th>Status Changed</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,11 +38,24 @@
                                             <td><?php echo $mc->gender;?></td>
                                             <td><?php echo $mc->address;?></td>
                                             <td><?php echo $mc->username;?></td>
-                                            <input type="hidden" id="confirmdelete" name="confirmForm">
+                                           
                                             <td>
+                                            <?php if($mc->status=='unblock'){?>
 												<a href="edit_profile?update=<?php echo $mc->cust_id?>" class="btn btn-primary">Edit</a>
 												<a href="delete?del_customer=<?php echo $mc->cust_id?>" class="btn btn-danger mx-2">Delete</a>
+                                            <?php } else { ?>
+                                                <p class="text-danger">Customer Id Blocked</p>
+                                            <?php } ?>
 											</td>
+                                            <td>
+                                            <!--Unblock Customer-->
+                                            <?php if($mc->status=='unblock'){?>
+                                                <p class="text-center">--------</p>
+                                            <?php } else { ?>
+                                               <a href="status?unblock=<?php echo $mc->cust_id?>" class="btn btn-success">Unblock Customer</a>
+                                            <?php } ?>
+											</td>
+                                            
                                         </tr>
                                         <?php } ?>
                                     </tbody>

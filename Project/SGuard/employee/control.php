@@ -265,11 +265,22 @@ class control extends model
 							alert('Customer Deleted successful !');
 							window.location='Manage Customer';
 						</script>";
+						} else {
+							echo "<script>
+							alert('Customer Not Deleted successful,Check Status !');
+							window.location='Manage Customer';
+						</script>";
 						}
-					} else { ?>
+					} 
+					else {
+						echo "<script>
+							alert('Edit Status !');
+							window.location='Manage Customer';
+						</script>";
 
-					<?php }
+					}
 				}
+				
 				if (isset($_REQUEST['del_guard'])) {
 					$id = $_REQUEST['del_guard'];
 					$where = array("gu_id" => $id);
@@ -365,7 +376,53 @@ class control extends model
 					}
 
 				}
-				//feedback
+				//Customer Block & Unblock
+				if(isset($_REQUEST['block']))
+				{
+					$cust_id=$_REQUEST['block'];
+					// $cust_id;
+					$data=array("cust_id"=>$cust_id);
+					
+					$status = 'block';
+						$where1 = array("status" => $status);
+						$block = $this->update('customers', $where1, $data);
+
+					if($block)
+					{
+						echo "<script>window.location='Manage Customer';</script>";
+					}
+					else
+					{
+						echo"<script>
+							alert('Customer Not Blocked ');
+							window.location='edit_profile';
+						<script>";
+					}
+
+				}
+				if(isset($_REQUEST['unblock']))
+				{
+					$cust_id=$_REQUEST['unblock'];
+					// $cust_id;
+					$data=array("cust_id"=>$cust_id);
+					
+					$status = 'unblock';
+						$where1 = array("status" => $status);
+						$unblock = $this->update('customers', $where1, $data);
+
+					if($unblock)
+					{
+						echo "<script>window.location='Manage Customer';</script>";
+					}
+					else
+					{
+						echo"<script>
+							alert('Customer Not Blocked ');
+							window.location='edit_profile';
+						<script>";
+					}
+
+				}
 
 				break;
 			case '/logout':

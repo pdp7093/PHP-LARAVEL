@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 11:18 AM
+-- Generation Time: Jan 02, 2025 at 07:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,8 +32,15 @@ CREATE TABLE `admin` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `status` enum('unblock','block','','') NOT NULL DEFAULT 'unblock'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `name`, `email`, `password`, `status`) VALUES
+(1, 'Deepak Prasad', 'deepak@admin.com', 'deepak7093', 'unblock');
 
 -- --------------------------------------------------------
 
@@ -45,7 +52,8 @@ CREATE TABLE `complain` (
   `c_id` int(11) NOT NULL,
   `cust_id` int(11) DEFAULT NULL,
   `gu_id` int(11) DEFAULT NULL,
-  `complain` varchar(500) DEFAULT NULL
+  `complain` varchar(500) DEFAULT NULL,
+  `complain_status` enum('solved','pending','','') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -80,41 +88,24 @@ INSERT INTO `contact` (`con_id`, `name`, `email`, `mobile_no`, `comment`) VALUES
 CREATE TABLE `customers` (
   `cust_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `first Name` varchar(100) NOT NULL,
-  `last name` varchar(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `mobile_no` int(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `gender` varchar(20) NOT NULL,
   `address` varchar(500) NOT NULL,
-  `image` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dummy_customer`
---
-
-CREATE TABLE `dummy_customer` (
-  `id` int(11) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `firstname` varchar(150) NOT NULL,
-  `lastname` varchar(150) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `mobile_no` int(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `image` varchar(150) NOT NULL
+  `image` varchar(300) NOT NULL,
+  `status` enum('unblock','block','','') NOT NULL DEFAULT 'unblock'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dummy_customer`
+-- Dumping data for table `customers`
 --
 
-INSERT INTO `dummy_customer` (`id`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `gender`, `address`, `image`) VALUES
-(1, 'deepak1', 'deepak', 'prasad', 'prasad@gmail.com', 2147483647, '41277f92b543edf1ac845bb17e03076d', 'male', 'narol,ahmedabad', 'bank3.jfif');
+INSERT INTO `customers` (`cust_id`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `gender`, `address`, `image`, `status`) VALUES
+(5, 'deepak1', 'Deepak', 'Prasad', 'prasaddeepak186@gmail.com', 2147483646, '3b8f9fa2e58b5e835028f1dafc2de1fa', 'male', 'Vatva\r\nAhmadabad', 'स्क्रीनशॉट 2024-02-09 113620.png', 'unblock'),
+(37, 'rakesh1', 'Rakesh', 'Singh', 'rakeshsingh@gmail.com', 1234567890, '32da0f5520e7edba6fb80d34db349cc6', 'male', 'Narol', 'Screenshot 2024-08-01 171342.png', 'unblock');
 
 -- --------------------------------------------------------
 
@@ -135,30 +126,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`em_id`, `name`, `email`, `password`, `status`) VALUES
-(1, 'ramesh', 'ramesh@gmail.com', '41277f92b543edf1ac845bb17e03076d', 'unblock'),
-(2, 'ramesh', 'ramesh@gmail.com', '41277f92b543edf1ac845bb17e03076d', 'unblock'),
-(3, 'ramesh', 'ramesh@gmail.com', '41277f92b543edf1ac845bb17e03076d', 'unblock');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `fake_table`
---
-
-CREATE TABLE `fake_table` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `fake_table`
---
-
-INSERT INTO `fake_table` (`id`, `name`, `email`, `username`) VALUES
-(1, 'deepak', 'deepak@gmail.com', 'dummy1'),
-(2, 'prasad', 'prasad@gmail.com', 'dummy2');
+(1, 'ramesh', 'ramesh@gmail.com', 'b1471adc34c852d9ca3f03f5f47ff496', 'unblock'),
+(5, 'Harsh', 'harsh@gmail.com', 'b0aa651c991deca550252ed6cbba99ba', 'unblock');
 
 -- --------------------------------------------------------
 
@@ -173,6 +142,14 @@ CREATE TABLE `feedback` (
   `feedback` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feed_id`, `cust_id`, `Star`, `feedback`) VALUES
+(7, 5, 3, 'Submit'),
+(8, 5, 3, 'Submit');
+
 -- --------------------------------------------------------
 
 --
@@ -182,16 +159,23 @@ CREATE TABLE `feedback` (
 CREATE TABLE `guards` (
   `gu_id` int(11) NOT NULL,
   `full_name` varchar(150) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `g_email` varchar(100) NOT NULL,
   `mobile_no` varchar(100) NOT NULL,
   `gender` varchar(50) NOT NULL,
   `address` varchar(500) NOT NULL,
-  `id proof` varchar(100) NOT NULL,
-  `id_proof photo` varchar(300) NOT NULL,
+  `id_proof` varchar(100) NOT NULL,
   `any disability` varchar(50) NOT NULL,
   `disability` varchar(100) NOT NULL,
-  `profile_image` varchar(300) NOT NULL
+  `profile_image` varchar(300) NOT NULL,
+  `status` enum('block','available','posted') NOT NULL DEFAULT 'available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `guards`
+--
+
+INSERT INTO `guards` (`gu_id`, `full_name`, `g_email`, `mobile_no`, `gender`, `address`, `id_proof`, `any disability`, `disability`, `profile_image`, `status`) VALUES
+(16, 'Pawan Singh', 'pawan@gmail.com', '1234567890', 'male', 'Maninagar', 'ACCOUNT QUESTION BANK - Google Docs.pdf', '', 'no', 'स्क्रीनशॉट 2024-02-09 113620.png', 'posted');
 
 -- --------------------------------------------------------
 
@@ -201,11 +185,25 @@ CREATE TABLE `guards` (
 
 CREATE TABLE `posting` (
   `post_id` int(11) NOT NULL,
-  `posting_date` datetime DEFAULT NULL,
+  `posting_date` date DEFAULT NULL,
   `gu_id` int(11) DEFAULT NULL,
   `address` varchar(500) DEFAULT NULL,
-  `hire_by` int(11) DEFAULT NULL
+  `cust_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `posting`
+--
+
+INSERT INTO `posting` (`post_id`, `posting_date`, `gu_id`, `address`, `cust_id`) VALUES
+(2, '2024-12-12', NULL, 'Vatva Ahmedabad', 5),
+(3, '2024-12-03', NULL, 'Narol', 5),
+(4, '2024-12-05', NULL, 'Narol', NULL),
+(5, '0000-00-00', NULL, '', 5),
+(10, '0000-00-00', NULL, '', 5),
+(11, '0000-00-00', NULL, '', 5),
+(12, '0000-00-00', 16, '', 5),
+(13, '0000-00-00', NULL, '', 5);
 
 -- --------------------------------------------------------
 
@@ -218,10 +216,18 @@ CREATE TABLE `request` (
   `cust_id` int(11) DEFAULT NULL,
   `number_of_guard` int(11) DEFAULT NULL,
   `for_where` varchar(50) NOT NULL,
-  `request_status` varchar(50) DEFAULT NULL,
+  `request_status` enum('approve','pending','reject','') DEFAULT 'pending',
   `address` varchar(500) DEFAULT NULL,
-  `remarks` varchar(500) DEFAULT NULL
+  `remarks` varchar(500) DEFAULT NULL,
+  `posting_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`req_id`, `cust_id`, `number_of_guard`, `for_where`, `request_status`, `address`, `remarks`, `posting_date`) VALUES
+(2, 5, 4, 'residency', 'approve', 'Om shanti Vatva Ahmedabad', 'no', '2024-12-19');
 
 --
 -- Indexes for dumped tables
@@ -231,7 +237,8 @@ CREATE TABLE `request` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
+  ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `complain`
@@ -239,7 +246,7 @@ ALTER TABLE `admin`
 ALTER TABLE `complain`
   ADD PRIMARY KEY (`c_id`),
   ADD KEY `cust_id` (`cust_id`),
-  ADD KEY `gu_id` (`gu_id`);
+  ADD KEY `complain_ibfk_2` (`gu_id`);
 
 --
 -- Indexes for table `contact`
@@ -256,22 +263,10 @@ ALTER TABLE `customers`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `dummy_customer`
---
-ALTER TABLE `dummy_customer`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`em_id`);
-
---
--- Indexes for table `fake_table`
---
-ALTER TABLE `fake_table`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `feedback`
@@ -285,7 +280,7 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `guards`
   ADD PRIMARY KEY (`gu_id`),
-  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `email` (`g_email`),
   ADD UNIQUE KEY `mobile_no` (`mobile_no`);
 
 --
@@ -293,8 +288,8 @@ ALTER TABLE `guards`
 --
 ALTER TABLE `posting`
   ADD PRIMARY KEY (`post_id`),
-  ADD KEY `gu_id` (`gu_id`),
-  ADD KEY `hire_by` (`hire_by`);
+  ADD KEY `posting_ibfk_1` (`gu_id`),
+  ADD KEY `posting_ibfk_2` (`cust_id`);
 
 --
 -- Indexes for table `request`
@@ -311,13 +306,13 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `complain`
 --
 ALTER TABLE `complain`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -329,49 +324,37 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `dummy_customer`
---
-ALTER TABLE `dummy_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `em_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `fake_table`
---
-ALTER TABLE `fake_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `em_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `guards`
 --
 ALTER TABLE `guards`
-  MODIFY `gu_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `posting`
 --
 ALTER TABLE `posting`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -382,7 +365,7 @@ ALTER TABLE `request`
 --
 ALTER TABLE `complain`
   ADD CONSTRAINT `complain_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customers` (`cust_id`),
-  ADD CONSTRAINT `complain_ibfk_2` FOREIGN KEY (`gu_id`) REFERENCES `guards` (`gu_id`);
+  ADD CONSTRAINT `complain_ibfk_2` FOREIGN KEY (`gu_id`) REFERENCES `guards` (`gu_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `feedback`
@@ -394,8 +377,8 @@ ALTER TABLE `feedback`
 -- Constraints for table `posting`
 --
 ALTER TABLE `posting`
-  ADD CONSTRAINT `posting_ibfk_1` FOREIGN KEY (`gu_id`) REFERENCES `guards` (`gu_id`),
-  ADD CONSTRAINT `posting_ibfk_2` FOREIGN KEY (`hire_by`) REFERENCES `customers` (`cust_id`);
+  ADD CONSTRAINT `posting_ibfk_1` FOREIGN KEY (`gu_id`) REFERENCES `guards` (`gu_id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `posting_ibfk_2` FOREIGN KEY (`cust_id`) REFERENCES `customers` (`cust_id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `request`

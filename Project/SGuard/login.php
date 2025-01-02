@@ -18,6 +18,7 @@ if(isset($_SESSION['username']))
   <title>Login</title>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
+	<script src="https://kit.fontawesome.com/aa8cf25ef0.js" crossorigin="anonymous"></script>
 </head>
 <style>
         .transbox {
@@ -43,23 +44,24 @@ if(isset($_SESSION['username']))
               <h2 class="mb-5 text-center daggerdancer text-primary">SGuard</h2>
               <hr style="border-color:black;">
               <form action="" method="post">
-                <div class="form-outline mb-4">
+                <div class="form-group mb-4">
                   <label class="form-label" for="username">Username</label>
                   <input type="text" id="username" class="form-control form-control-lg" name="username"
-                    placeholder="Enter Username" required/>
-
+                    placeholder="Enter Username" required />
+					
                 </div>
-
+				
                 <div class="form-outline mb-4">
                   <label class="form-label" for="password">Password</label>
                   <input type="password" id="password" class="form-control form-control-lg" name="password"
-                    placeholder="Enter Password" required/>
+                    placeholder="Enter Password" required />
+                    
 
                 </div>
-               <input type="submit" value="Login" name="login" class="btn btn-primary">
+               <input type="submit" value="Login" name="login" class="btn btn-primary rounded-circle btn-lg">
 
-                <hr class="my-1">
-                <a href="#">Forgot passowrd?</a>
+                <hr class="my-1 mb-5">
+                <a href="#" class="mt-5">Forgot passowrd?</a>
                 <div class="form-outline text-center my-3 border-top">
                   Not a member yet?<a href="signup">Create an Account</a>
                 </div>

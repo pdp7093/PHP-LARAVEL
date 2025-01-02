@@ -19,10 +19,12 @@
 <body>
     <div class="container py-5 h-100">
         <div class="row h-100 d-flex justify-content-center align-items-center">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5  ">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-10  ">
                 <div class="card shadow-2-strong" style="border-radius: 1rem; border-color:blue;">
                     <div class="card-body p-5 ">
-                        <h2 class="mb-5 text-center daggerdancer text-primary">Edit Profile</h2>
+                        <h2 class="mb-5 text-center daggerdancer text-primary">Edit Profile
+                            <a href="status?block=<?php echo $fetch->cust_id?>" class="btn btn-danger float-right">Block User</a>
+                        </h2>
                         <hr style="border-color:black;">
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-outline mb-4 row">
