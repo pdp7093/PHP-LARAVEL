@@ -11,15 +11,15 @@ class model
 	
 	function __construct()
 	{
-		//$this->conn=new mysqli('localhost','u291128029_rajvi','Rajvi@701','u291128029_rajvi');
+		
 		$this->conn=new mysqli('localhost','root','','assessment');
 	}
 	
 	function select($tbl)
 	{
-		$sel="select * from $tbl";  // query
-		$run=$this->conn->query($sel);  // run on db
-		while($fetch=$run->fetch_object()) // fetch all data from database
+		$sel="select * from $tbl";  
+		$run=$this->conn->query($sel); 
+		while($fetch=$run->fetch_object())
 		{
 			$arr[]=$fetch;
 		}
@@ -29,19 +29,7 @@ class model
 		}
 	}
 	
-	function select_join($tbl1,$tbl2,$on)
-	{
-		$sel="select * from $tbl1 join $tbl2 on $on";  // query
-		$run=$this->conn->query($sel);  // run on db
-		while($fetch=$run->fetch_object()) // fetch all data from database
-		{
-			$arr[]=$fetch;
-		}
-		if(!empty($arr))
-		{
-			return $arr;
-		}
-	}
+	
 	
 	function insert($tbl,$arr)
 	{
@@ -53,7 +41,7 @@ class model
 		$value_arr=array_values($arr);
 		$value=implode("','",$value_arr); // 'name','email',comment','created_at','udated_at'
 
-		echo $ins="insert into $tbl ($column) value ('$value')";  // query
+		 $ins="insert into $tbl ($column) value ('$value')";  // query
 		$run=$this->conn->query($ins);  // run on db
 		return $run;
 	}
@@ -66,7 +54,7 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $del.=" and $col_arr[$i]='$value_arr[$i]'";
+			$del.=" and $col_arr[$i]='$value_arr[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($del);  // run on db
@@ -82,23 +70,7 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $sel.=" and $col_arr[$i]='$value_arr[$i]'";
-			$i++;
-		}
-		$run=$this->conn->query($sel);  // run on db
-		return $run;
-	}
-	
-	function select_where_join($tbl1,$tbl2,$on,$where)
-	{
-		$col_arr=array_keys($where);
-		$value_arr=array_values($where);
-		
-		$sel="select * from $tbl1 join $tbl2 on $on where 1=1";  // query
-		$i=0;
-		foreach($where as $w)
-		{
-			echo $sel.=" and $col_arr[$i]='$value_arr[$i]'";
+			$sel.=" and $col_arr[$i]='$value_arr[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($sel);  // run on db
@@ -106,12 +78,12 @@ class model
 	}
 	
 	
-	function update_where($tbl,$arr,$where)
+	function update($tbl,$arr,$where)
 	{
 		$col_arr=array_keys($arr);
 		$value_arr=array_values($arr);
 		$j=0;
-		$upd="update $tbl set";  // query   name="",email="", 
+		$upd="update $tbl set";  
 		$count=count($arr);
 		foreach($arr as $d)
 		{
@@ -131,7 +103,7 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $upd.=" and $col_where[$i]='$value_where[$i]'";
+			$upd.=" and $col_where[$i]='$value_where[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($upd);  // run on db
