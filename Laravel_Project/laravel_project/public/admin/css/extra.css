@@ -1,0 +1,36 @@
+#action_btn
+{
+    border: 2px solid black;
+}
+
+label{
+    margin-left: 10px;
+}
+.style-btn2
+{
+    word-spacing: 4px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+#add_this:hover,#add_Categories:hover,.add_this:hover
+{
+    transition-duration: 0.5s;
+    color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btn:hover,.mystyle
+{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+label
+{
+    
+    font-weight: bold;
+}
+form{
+    margin-top: 80px;
+}
+.form-group,.control-group
+{
+    margin-bottom: 20px;
+}

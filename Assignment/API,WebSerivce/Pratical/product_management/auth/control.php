@@ -27,7 +27,11 @@ class control extends model
                         echo json_encode(array("message" => "Invalid Password", "status" => false));
                     }
                 } else {
+<<<<<<< HEAD
                     echo json_encode(array("message" => "No User Found.", "status" => false));
+=======
+                    echo json_encode(array("message" => "No Contact Found.", "status" => false));
+>>>>>>> fa7e67cde181d1daefd9864a4a389baa4446a731
                 }
                 
                 break;

@@ -15,6 +15,7 @@ class model
 	}
 	function select($tbl)
 	{
+<<<<<<< HEAD
 		$sel="select * from $tbl";  // query
 		$run=$this->conn->query($sel);  // run on db
 		while($fetch=$run->fetch_object()) // fetch all data from database
@@ -25,6 +26,17 @@ class model
 		{
 			return $arr;
 		}
+=======
+
+		$sel = "select * from $tbl";   // query
+		$run = $this->conn->query($sel);  // run 
+		while ($fetch = $run->fetch_object()) {
+
+			$arr[] = $fetch;
+		}
+		return $arr;
+
+>>>>>>> fa7e67cde181d1daefd9864a4a389baa4446a731
 	}
 	function insert($tbl, $arr)
 	{
@@ -68,6 +80,7 @@ class model
 		$run = $this->conn->query($del);  // query run on db
 		return $run;
 	}
+<<<<<<< HEAD
 
 	function update($tbl, $arr, $where)
 	{
@@ -101,6 +114,8 @@ class model
 		return $run;
 	}
 
+=======
+>>>>>>> fa7e67cde181d1daefd9864a4a389baa4446a731
 }
 $obj=new model;
 ?>

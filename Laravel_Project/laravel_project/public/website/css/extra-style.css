@@ -1,0 +1,23 @@
+.header{
+	margin-top:10%;
+}
+#login_form
+{
+	margin-top: 10%;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+h2	
+{
+	text-decoration: underline;
+}
+
+.space
+{
+	letter-spacing: 2px;
+	font-size: larger;
+}
+.btn:hover,.mystyle
+{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

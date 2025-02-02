@@ -43,6 +43,9 @@ class control extends model
 
 			case '/index':
 				include_once('index.php');
+				$res=$this->select('customers');
+				$count=count($res);
+				
 				break;
 
 			case '/Add Guard':

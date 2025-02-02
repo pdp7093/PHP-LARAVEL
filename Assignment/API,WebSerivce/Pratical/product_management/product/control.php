@@ -43,6 +43,7 @@ class control extends model
             break;
             case '/fetch_all':
                 $res=$this->select('product');
+<<<<<<< HEAD
 				$count=count($res); // data count
 				if($count > 0)
 				{	
@@ -63,6 +64,12 @@ class control extends model
                 {
                     echo json_encode(array("message" => "Product Fetch Successfully", "status" => true));
                     echo json_encode($fetch);
+=======
+                if($res)
+                {
+                    echo json_encode(array("message" => "Product Fetch Successfully", "status" => true));
+                    echo json_encode($res);
+>>>>>>> fa7e67cde181d1daefd9864a4a389baa4446a731
                 }
                 else
                 {
@@ -70,6 +77,7 @@ class control extends model
                 }
                 break;
 
+<<<<<<< HEAD
             case '/update':
                 $data=json_decode(file_get_contents("php://input"),true);
 
@@ -90,6 +98,20 @@ class control extends model
                 else
                 {
                     echo json_encode(array("message" => "Product Not Update Successfully", "status" => false));
+=======
+            case '/fetch_single':
+                $id=$_GET['id'];
+                $arr=array("id"=>$id);
+                $res=$this->select_where('product',$arr);
+                if($res)
+                {
+                    echo json_encode(array("message" => "Product Fetch Successfully", "status" => true));
+                    echo json_encode($res);
+                }
+                else
+                {
+                    echo json_encode(array("message" => "Product Not Fetch Successfully", "status" => false));	
+>>>>>>> fa7e67cde181d1daefd9864a4a389baa4446a731
                 }
                 break;
             default:

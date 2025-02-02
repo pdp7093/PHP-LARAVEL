@@ -14,6 +14,9 @@
                             <a href="#">
                                 <i class="fa fa-bolt fa-5x"></i>
                                 <h5>Zero Issues</h5>
+                                <h4><?php
+                                                            
+                               ?></h4>
                             </a>
                         </div>
                     </div>
