@@ -41,6 +41,21 @@ class model
 		$run=$this->conn->query($sel);  // query run on db
 		return $run;
     }
+    function delete($tbl,$arr)
+    {
+        $column_arr=array_keys($arr);
+		$values_arr=array_values($arr);
+		
+		$sel="delete from $tbl where 1=1";  // 1=1 means query contnue
+		$i=0;
+		foreach($arr as $w)
+		{
+			$sel.=" and $column_arr[$i]='$values_arr[$i]'";
+			$i++;
+		}
+		$run=$this->conn->query($sel);  // query run on db
+		return $run;
+    }
 
     function insert($tbl,$arr)
     {
@@ -60,36 +75,34 @@ class model
 
     function update($tbl,$arr,$where)
     {
-        $col=array_keys($arr);
-        $val=array_values($arr);
-
-        $upd="update $tbl set 1=1";
-        $i=0;
-        $count=count($arr);
-        foreach($arr as $a)
-        {
-            if($count=$i+1)
-            {
-                $upd.=" and $col[$i]='$val[$i]'";
-                $i++;
-            }
-            else
-            {
-                $upd.=" and $col[$i]='$val[$i]',";
-                $i++;
-            }
-        }
-        $upd.= "where 1=1";
-        $j=0;
-        $wcol=array_keys($where);
-        $wval=array_values($where);
-        foreach($where as $w)
-        {
-            $upd.="and $wcol[$j]='$wval[$j]'";
-            $j++;
-        }
-        $run=$this->conn->query($upd);
-        return $run;
+        $col_arr=array_keys($arr);
+		$value_arr=array_values($arr);
+		$j=0;
+		$upd="update $tbl set";  
+		$count=count($arr);
+		foreach($arr as $d)
+		{
+			if($count==$j+1)
+			{
+				$upd.=" $col_arr[$j]='$value_arr[$j]'";
+			}
+			else
+			{
+				$upd.=" $col_arr[$j]='$value_arr[$j]',";
+				$j++;
+			}			
+		}
+		$upd.=" where 1=1";
+		$col_where=array_keys($where);
+		$value_where=array_values($where);
+		$i=0;
+		foreach($where as $w)
+		{
+			$upd.=" and $col_where[$i]='$value_where[$i]'";
+			$i++;
+		}
+		$run=$this->conn->query($upd); 
+		return $run;
     }
 }
 

@@ -10,7 +10,7 @@ class control extends model
 
         switch ($path) {
             case '/index':
-                $pf=$this->select('product');
+                $pf = $this->select('product');
                 include_once('index.php');
                 break;
 
@@ -50,19 +50,17 @@ class control extends model
                     }
                 }
                 include_once('add_product.php');
-            break;
+                break;
 
             case '/edit':
-                if(isset($_REQUEST['edit']))
-                {
-                    $id=$_REQUEST['edit'];
-                    $where=array("id"=>$id);
+                if (isset($_REQUEST['edit'])) {
+                    $id = $_REQUEST['edit'];
+                    $where = array("id" => $id);
 
-                    $res=$this->select_where('product',$where);
-                    $p=$res->fetch_object();
+                    $res = $this->select_where('product', $where);
+                    $p = $res->fetch_object();
 
-                    if(isset($_REQUEST['submit']))
-                    {
+                    if (isset($_REQUEST['submit'])) {
                         $name = $_REQUEST['name'];
                         $qty = $_REQUEST['qty'];
                         $price = $_REQUEST['price'];
@@ -70,95 +68,120 @@ class control extends model
                     }
                 }
                 include_once('update.php');
-            break;
+                break;
 
             //Api Routes
 
             case '/api_fetch_all':
-                $sel=$this->select('product');
-                $count=count($sel);
-                if($count>0)
-                {
+                $sel = $this->select('product');
+                $count = count($sel);
+                if ($count > 0) {
                     echo json_encode($sel);
+                } else {
+                    echo json_encode(array("message" => "No Record Found", "status" => false));
                 }
-                else
-                {
-                    echo json_encode(array("message"=>"No Record Found","status"=>false));
-                }    
-            break;
+                break;
 
             case '/api_fetch_single':
                 $id = $_GET['id'];
-				
-				$where=array("id"=>$id);
-				$chk=$this->select_where('product',$where);
-				$res=$chk->fetch_object();
-				if(isset($res))
-				{	
-					echo json_encode($res);
-				}
-				else
-				{	
-					echo json_encode(array("message" => "No Product Found.", "status" => false));
-				}
 
-            break;
+                $where = array("id" => $id);
+                $chk = $this->select_where('product', $where);
+                $res = $chk->fetch_object();
+                if (isset($res)) {
+                    echo json_encode($res);
+                } else {
+                    echo json_encode(array("message" => "No Product Found.", "status" => false));
+                }
+
+                break;
 
             case '/api_create':
-                $data=json_decode(file_get_contents("php://input"),true);
+              //  $data = json_decode(file_get_contents("php://input"), true);
+                //$data = json_decode(file_get_contents("php://input"), true);
 
-                $name=$data->name;
-                $qty=$data->qty;
-                $price=$data->price;
-                $image=$data->image;
-
-                $arr=array("name"=>$name,"qty"=>$qty,"price"=>$price,"image"=>$image);
-
-                $res=$this->insert('product',$arr);
-                if($res)
-                {
-                    echo json_encode(array("message"=>"Insert Successfully","status"=>true));
+                /*if (!$data) {
+                    echo json_encode(array("message" => "Invalid JSON or Empty Request", "status" => false));
+                    exit;
+                }*/
+                //echo $data->name;
+                /*$name = $data["name"];
+                $qty = $data["qty"];
+                $price = $data["price"];
+                $image = $data["image"];*/
+                $name = $_POST["name"] ?? '';
+                $qty = $_POST["qty"] ?? '';
+                $price = $_POST["price"] ?? '';
+                   
+                if (isset($_FILES["image"])) {
+                    $targetDir = "upload/";
+                    $imageName = uniqid() . "_" . basename($_FILES["image"]["name"]);
+                    $targetFilePath = $targetDir . $imageName;
+                    
+                    if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
+                        $imagePath = $targetFilePath;
+                    } else {
+                        $imagePath = null;
+                    }
+                } else {
+                    $imagePath = null;
                 }
-                else
-                {
-                    echo json_encode(array("message"=>"Insert Failed","status"=>false));
+                $arr = array("name" => $name, "qty" => $qty, "price" => $price, "image" => $imageName);
+
+                $res = $this->insert('product', $arr);
+                if ($res) {
+                    echo json_encode(array("message" => "Insert Successfully", "status" => true));
+                } else {
+                    echo json_encode(array("message" => "Insert Failed", "status" => false));
                 }
-            break;
+                break;
 
             case '/api_delete':
-                $id=$_GET['id'];
-                $where=array("id"=>$id);
-                $res=$this->delete('product',$where); 
-                if($res or die("Delete Query Failed"))
-                {	
-					echo json_encode(array("message" => "Prodcut Delete Successfully", "status" => true));	
-				}
-				else
-				{	
-					echo json_encode(array("message" => "Failed Product Not Deleted", "status" => false));	
-				}
-            break;
+                $id = $_GET['id'];
+                $where = array("id" => $id);
+                $res = $this->delete('product', $where);
+                if ($res or die("Delete Query Failed")) {
+                    echo json_encode(array("message" => "Prodcut Delete Successfully", "status" => true));
+                } else {
+                    echo json_encode(array("message" => "Failed Product Not Deleted", "status" => false));
+                }
+                break;
 
             case '/api_update':
-                $data=json_decode(file_get_contents("php://input"));
-                $id=$data->id;
-                $name=$data->name;
-                $qty=$data->qty;
-                $price=$data->price;
-                $image=$data->image;
+                $data = json_decode(file_get_contents("php://input"), true);
+                $id = $data["id"];
+                $name = $data["name"];
+                $qty = $data["qty"];
+                $price = $data["price"];
+                $image = $data["image"];
 
-                $where=array("id"=>$id);
-                $arr=array("name"=>$name,"qty"=>$qty,"price"=>$price,"image"=>$image);
-                $res=$this->update_where('blog',$arr,$where);
-				
-				if($res or die("Update Query Failed"))
-				{	
-					echo json_encode(array("message" => "Product Update Successfully", "status" => true));	
-				}
-				else
-				{	
-					echo json_encode(array("message" => "Failed Product Not Update", "status" => false));	
-				}
+                $where = array("id" => $id);
+                $arr = array("name" => $name, "qty" => $qty, "price" => $price, "image" => $image);
+                $res = $this->update('product', $arr, $where);
+
+                if ($res or die("Update Query Failed")) {
+                    echo json_encode(array("message" => "Product Update Successfully", "status" => true));
+                } else {
+                    echo json_encode(array("message" => "Failed Product Not Update", "status" => false));
+                }
+            break;
+            case '/api_update_where':
+                $data = json_decode(file_get_contents("php://input"), true);
+                $id = $data["id"];
+                $name = $data["name"];
+                $qty = $data["qty"];
+                $price = $data["price"];
+                $image = $data["image"];
+                //$arr = array("name" => $name, "qty" => $qty, "price" => $price, "image" => $imageName);
+                $where = array("id" => $id);
+                $arr = array("name" => $name, "qty" => $qty, "price" => $price, "image" => $image);
+                $res = $this->update('product', $arr, $where);
+
+                if ($res or die("Update Query Failed")) {
+                    echo json_encode(array("message" => "Product Update Successfully", "status" => true));
+                } else {
+                    echo json_encode(array("message" => "Failed Product Not Update", "status" => false));
+                }
             break;
         }
     }

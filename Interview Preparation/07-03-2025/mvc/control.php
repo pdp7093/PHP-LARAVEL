@@ -119,7 +119,88 @@ class control extends model
                 }
                 include_once('edit.php');
             break;
+//------------------------------------------------API------------------------------------------------
+            case '/Fetch_all':
+                $res=$this->select('product');
+                $count=count($res);
+                if($count>0)
+                {
+                    echo json_encode($res);
+                }
+                else
+                {
+                    echo json_encode(array("message"=>"No Product   Found","status"=>false));
+                }
+            break;
+            case '/Fetch_single':
+                $id=$_GET['id'];
+                $where=array("id"=>$id);
+                $chk=$this->select_where('product',$where);
+                $res=$chk->fetch_object();
+                //$count=count($res);
+                if($res)
+                {
+                    echo json_encode($res);
+                }
+                else
+                {
+                    echo json_encode(array("message"=>"No Product Found","status"=>false));
+                }
+            break;
+            case '/Api_create':
+                $data=json_decode(file_get_contents("php://input"),true);
 
+                $p_name=$data['p_name'];
+                $p_category=$data['p_category'];
+                $p_price=$data['p_price'];
+                
+                $insert=array("p_name"=>$p_name,"p_category"=>$p_category,"p_price"=>$p_price);
+
+                $res=$this->insert('product',$insert);
+                if($res)
+                {
+                    echo json_encode(array("message"=>"Insert Successfully","status"=>true));
+                }
+                else{
+                    echo json_encode(array("message"=>"Insert Not Successfully","status"=>false));
+                }
+            break;
+
+            case '/Fetch_delete':
+                $id=$_GET['id'];
+                $where=array("id"=>$id);
+                $res=$this->delete('product',$where);
+               // $res=$chk->fetch_object();
+                //$count=count($res);
+                if($res)
+                {
+                    echo json_encode(array("message"=>"Delete Successfully","status"=>true));
+                }
+                else
+                {
+                    echo json_encode(array("message"=>"Delete Not Successfully","status"=>false));
+                }
+            break;
+            case '/Api_update':
+                $data=json_decode(file_get_contents("php://input"),true);
+
+                $id=$data['id'];
+                $p_name=$data['p_name'];
+                $p_category=$data['p_category'];
+                $p_price=$data['p_price'];
+                
+                $where=array("id"=>$id);
+                $update=array("p_name"=>$p_name,"p_category"=>$p_category,"p_price"=>$p_price);
+
+                $res=$this->update_where('product',$update,$where);
+                if($res)
+                {
+                    echo json_encode(array("message"=>"Update Successfully","status"=>true));
+                }
+                else{
+                    echo json_encode(array("message"=>"Update Not Successfully","status"=>false));
+                }
+            break;
         }
 
     }
